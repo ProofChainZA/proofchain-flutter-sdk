@@ -1,0 +1,4986 @@
+{
+  "sdkVersion": "0.1.1",
+  "namespaces": [
+    "documents",
+    "events",
+    "channels",
+    "certificates",
+    "webhooks",
+    "vault",
+    "search",
+    "verifyResource",
+    "tenant",
+    "passports",
+    "wallets",
+    "users",
+    "rewards",
+    "quests",
+    "schemas",
+    "dataViews",
+    "cohorts",
+    "fanpassLeaderboard",
+    "notifications",
+    "credentials",
+    "nft",
+    "partnerKeys",
+    "attestations",
+    "airkit"
+  ],
+  "publicOperations": 272,
+  "methods": [
+    {
+      "owner": "ProofChain",
+      "name": "forEndUser",
+      "signature": "factory ProofChain.forEndUser({required String userToken, required String tenantId, String? baseUrl, num? timeout, num? maxRetries})",
+      "source": "lib/src/client.dart",
+      "line": 253,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "ProofChain",
+      "name": "fromEnv",
+      "signature": "factory ProofChain.fromEnv()",
+      "source": "lib/src/client.dart",
+      "line": 271,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client",
+      "name": "verify",
+      "signature": "Future<VerificationResult> verify(String ipfsHash)",
+      "source": "lib/src/client.dart",
+      "line": 286,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client",
+      "name": "tenantInfo",
+      "signature": "Future<TenantInfo> tenantInfo()",
+      "source": "lib/src/client.dart",
+      "line": 290,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client",
+      "name": "usage",
+      "signature": "Future<UsageStats> usage([String period = 'month'])",
+      "source": "lib/src/client.dart",
+      "line": 294,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client",
+      "name": "close",
+      "signature": "void close()",
+      "source": "lib/src/client.dart",
+      "line": 299,
+      "nativeLifecycle": true
+    },
+    {
+      "owner": "client.documents",
+      "name": "attest",
+      "signature": "Future<AttestationResult> attest(AttestRequest request)",
+      "source": "lib/src/client.dart",
+      "line": 34,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.documents",
+      "name": "get",
+      "signature": "Future<Event> get(String ipfsHash)",
+      "source": "lib/src/client.dart",
+      "line": 54,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.events",
+      "name": "create",
+      "signature": "Future<Event> create(CreateEventRequest request)",
+      "source": "lib/src/client.dart",
+      "line": 62,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.events",
+      "name": "get",
+      "signature": "Future<Event> get(String eventId)",
+      "source": "lib/src/client.dart",
+      "line": 71,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.events",
+      "name": "list",
+      "signature": "Future<List<Event>> list([ListEventsRequest request = const ListEventsRequest()])",
+      "source": "lib/src/client.dart",
+      "line": 74,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.events",
+      "name": "search",
+      "signature": "Future<SearchResult> search(SearchRequest request)",
+      "source": "lib/src/client.dart",
+      "line": 90,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.events",
+      "name": "byHash",
+      "signature": "Future<Event> byHash(String ipfsHash)",
+      "source": "lib/src/client.dart",
+      "line": 104,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.events",
+      "name": "createBatch",
+      "signature": "Future<List<Event>> createBatch(List<CreateEventRequest> events)",
+      "source": "lib/src/client.dart",
+      "line": 107,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.channels",
+      "name": "create",
+      "signature": "Future<Channel> create(CreateChannelRequest request)",
+      "source": "lib/src/client.dart",
+      "line": 120,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.channels",
+      "name": "get",
+      "signature": "Future<Channel> get(String channelId)",
+      "source": "lib/src/client.dart",
+      "line": 122,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.channels",
+      "name": "status",
+      "signature": "Future<ChannelStatus> status(String channelId)",
+      "source": "lib/src/client.dart",
+      "line": 124,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.channels",
+      "name": "list",
+      "signature": "Future<List<Channel>> list([num limit = 50, num offset = 0])",
+      "source": "lib/src/client.dart",
+      "line": 126,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.channels",
+      "name": "stream",
+      "signature": "Future<StreamAck> stream(String channelId, StreamEventRequest request)",
+      "source": "lib/src/client.dart",
+      "line": 132,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.channels",
+      "name": "streamBatch",
+      "signature": "Future<JsonMap> streamBatch(String channelId, List<StreamEventRequest> events)",
+      "source": "lib/src/client.dart",
+      "line": 140,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.channels",
+      "name": "settle",
+      "signature": "Future<Settlement> settle(String channelId)",
+      "source": "lib/src/client.dart",
+      "line": 144,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.channels",
+      "name": "close",
+      "signature": "Future<Channel> close(String channelId)",
+      "source": "lib/src/client.dart",
+      "line": 146,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.certificates",
+      "name": "issue",
+      "signature": "Future<Certificate> issue(IssueCertificateRequest request)",
+      "source": "lib/src/client.dart",
+      "line": 154,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.certificates",
+      "name": "get",
+      "signature": "Future<Certificate> get(String certificateId)",
+      "source": "lib/src/client.dart",
+      "line": 167,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.certificates",
+      "name": "list",
+      "signature": "Future<List<Certificate>> list([ListCertificatesRequest request = const ListCertificatesRequest()])",
+      "source": "lib/src/client.dart",
+      "line": 169,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.certificates",
+      "name": "revoke",
+      "signature": "Future<Certificate> revoke(String certificateId, [String? reason])",
+      "source": "lib/src/client.dart",
+      "line": 183,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.certificates",
+      "name": "verify",
+      "signature": "Future<JsonMap> verify(String certificateId)",
+      "source": "lib/src/client.dart",
+      "line": 188,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.webhooks",
+      "name": "create",
+      "signature": "Future<Webhook> create(CreateWebhookRequest request)",
+      "source": "lib/src/client.dart",
+      "line": 196,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.webhooks",
+      "name": "get",
+      "signature": "Future<Webhook> get(String webhookId)",
+      "source": "lib/src/client.dart",
+      "line": 198,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.webhooks",
+      "name": "list",
+      "signature": "Future<List<Webhook>> list()",
+      "source": "lib/src/client.dart",
+      "line": 200,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.webhooks",
+      "name": "update",
+      "signature": "Future<Webhook> update(String webhookId, UpdateWebhookRequest request)",
+      "source": "lib/src/client.dart",
+      "line": 205,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.webhooks",
+      "name": "delete",
+      "signature": "Future<void> delete(String webhookId)",
+      "source": "lib/src/client.dart",
+      "line": 209,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.webhooks",
+      "name": "test",
+      "signature": "Future<JsonMap> test(String webhookId)",
+      "source": "lib/src/client.dart",
+      "line": 213,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.vault",
+      "name": "list",
+      "signature": "Future<VaultListResponse> list([String? folderId])",
+      "source": "lib/src/resources.dart",
+      "line": 12,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.vault",
+      "name": "upload",
+      "signature": "Future<VaultFile> upload(VaultUploadRequest request)",
+      "source": "lib/src/resources.dart",
+      "line": 19,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.vault",
+      "name": "get",
+      "signature": "Future<VaultFile> get(String fileId)",
+      "source": "lib/src/resources.dart",
+      "line": 39,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.vault",
+      "name": "download",
+      "signature": "Future<Uint8List> download(String fileId)",
+      "source": "lib/src/resources.dart",
+      "line": 42,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.vault",
+      "name": "delete",
+      "signature": "Future<void> delete(String fileId)",
+      "source": "lib/src/resources.dart",
+      "line": 45,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.vault",
+      "name": "move",
+      "signature": "Future<VaultFile> move(String fileId, String folderId)",
+      "source": "lib/src/resources.dart",
+      "line": 49,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.vault",
+      "name": "createFolder",
+      "signature": "Future<VaultFolder> createFolder(String name, [String? parentId])",
+      "source": "lib/src/resources.dart",
+      "line": 55,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.vault",
+      "name": "deleteFolder",
+      "signature": "Future<void> deleteFolder(String folderId)",
+      "source": "lib/src/resources.dart",
+      "line": 64,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.vault",
+      "name": "stats",
+      "signature": "Future<VaultStats> stats()",
+      "source": "lib/src/resources.dart",
+      "line": 68,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.vault",
+      "name": "share",
+      "signature": "Future<JsonMap> share(String fileId, [num? expiresInHours])",
+      "source": "lib/src/resources.dart",
+      "line": 71,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.search",
+      "name": "query",
+      "signature": "Future<SearchResponse> query([SearchQueryRequest? request])",
+      "source": "lib/src/resources.dart",
+      "line": 82,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.search",
+      "name": "quick",
+      "signature": "Future<SearchResponse> quick(String query, [num limit = 20])",
+      "source": "lib/src/resources.dart",
+      "line": 96,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.search",
+      "name": "byUser",
+      "signature": "Future<UserEventHistoryResponse> byUser(String userId, [Object? optionsOrLimit, num? offset])",
+      "source": "lib/src/resources.dart",
+      "line": 100,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.search",
+      "name": "byCertificate",
+      "signature": "Future<Event> byCertificate(String certificateId)",
+      "source": "lib/src/resources.dart",
+      "line": 117,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.search",
+      "name": "facets",
+      "signature": "Future<FacetsResponse> facets([String? fromDate, String? toDate])",
+      "source": "lib/src/resources.dart",
+      "line": 120,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.search",
+      "name": "stats",
+      "signature": "Future<SearchStats> stats()",
+      "source": "lib/src/resources.dart",
+      "line": 129,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.verifyResource",
+      "name": "certificate",
+      "signature": "Future<CertificateVerifyResult> certificate(String certificateId)",
+      "source": "lib/src/resources.dart",
+      "line": 137,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.verifyResource",
+      "name": "event",
+      "signature": "Future<JsonMap> event(String ipfsHash)",
+      "source": "lib/src/resources.dart",
+      "line": 141,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.verifyResource",
+      "name": "proof",
+      "signature": "Future<ProofVerifyResult> proof(String leaf, List<String> proof, String root)",
+      "source": "lib/src/resources.dart",
+      "line": 144,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.verifyResource",
+      "name": "batch",
+      "signature": "Future<BatchVerifyResult> batch(String batchId)",
+      "source": "lib/src/resources.dart",
+      "line": 155,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.verifyResource",
+      "name": "eventBatchProof",
+      "signature": "Future<EventBatchProof> eventBatchProof(String eventId)",
+      "source": "lib/src/resources.dart",
+      "line": 158,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.verifyResource",
+      "name": "batchVerify",
+      "signature": "Future<JsonMap> batchVerify(List<JsonMap> items)",
+      "source": "lib/src/resources.dart",
+      "line": 162,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.tenant",
+      "name": "listApiKeys",
+      "signature": "Future<List<ApiKey>> listApiKeys()",
+      "source": "lib/src/resources.dart",
+      "line": 170,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.tenant",
+      "name": "createApiKey",
+      "signature": "Future<ApiKey> createApiKey(CreateApiKeyRequest request)",
+      "source": "lib/src/resources.dart",
+      "line": 173,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.tenant",
+      "name": "deleteApiKey",
+      "signature": "Future<void> deleteApiKey(String keyId)",
+      "source": "lib/src/resources.dart",
+      "line": 187,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.tenant",
+      "name": "usageDetailed",
+      "signature": "Future<JsonMap> usageDetailed([String? fromDate, String? toDate])",
+      "source": "lib/src/resources.dart",
+      "line": 191,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.tenant",
+      "name": "context",
+      "signature": "Future<JsonMap> context()",
+      "source": "lib/src/resources.dart",
+      "line": 197,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.tenant",
+      "name": "blockchainStats",
+      "signature": "Future<BlockchainStats> blockchainStats()",
+      "source": "lib/src/resources.dart",
+      "line": 200,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.tenant",
+      "name": "blockchainVerify",
+      "signature": "Future<BlockchainProof> blockchainVerify(String certificateId)",
+      "source": "lib/src/resources.dart",
+      "line": 203,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.tenant",
+      "name": "blockchainCertificates",
+      "signature": "Future<JsonMap> blockchainCertificates([num? limit, num? offset])",
+      "source": "lib/src/resources.dart",
+      "line": 207,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.tenant",
+      "name": "forceBatch",
+      "signature": "Future<JsonMap> forceBatch()",
+      "source": "lib/src/resources.dart",
+      "line": 213,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.tenant",
+      "name": "settleAll",
+      "signature": "Future<JsonMap> settleAll()",
+      "source": "lib/src/resources.dart",
+      "line": 216,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.tenant",
+      "name": "settleEvent",
+      "signature": "Future<JsonMap> settleEvent(String eventId)",
+      "source": "lib/src/resources.dart",
+      "line": 219,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.passports",
+      "name": "list",
+      "signature": "Future<List<Passport>> list([ListOptions options = const ListOptions()])",
+      "source": "lib/src/passports.dart",
+      "line": 17,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.passports",
+      "name": "get",
+      "signature": "Future<Passport> get(String userId)",
+      "source": "lib/src/passports.dart",
+      "line": 22,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.passports",
+      "name": "getWithFields",
+      "signature": "Future<PassportWithFields> getWithFields(String userId)",
+      "source": "lib/src/passports.dart",
+      "line": 25,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.passports",
+      "name": "create",
+      "signature": "Future<Passport> create(CreatePassportRequest data)",
+      "source": "lib/src/passports.dart",
+      "line": 34,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.passports",
+      "name": "update",
+      "signature": "Future<Passport> update(String userId, UpdatePassportRequest data)",
+      "source": "lib/src/passports.dart",
+      "line": 37,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.passports",
+      "name": "delete",
+      "signature": "Future<void> delete(String userId)",
+      "source": "lib/src/passports.dart",
+      "line": 40,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.passports",
+      "name": "addPoints",
+      "signature": "Future<Passport> addPoints(String userId, num points, [String? reason])",
+      "source": "lib/src/passports.dart",
+      "line": 44,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.passports",
+      "name": "levelUp",
+      "signature": "Future<Passport> levelUp(String userId)",
+      "source": "lib/src/passports.dart",
+      "line": 53,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.passports",
+      "name": "linkWallet",
+      "signature": "Future<Passport> linkWallet(String userId, String walletAddress)",
+      "source": "lib/src/passports.dart",
+      "line": 58,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.passports",
+      "name": "getFieldValues",
+      "signature": "Future<List<FieldValue>> getFieldValues(String userId)",
+      "source": "lib/src/passports.dart",
+      "line": 61,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.passports",
+      "name": "setFieldValue",
+      "signature": "Future<void> setFieldValue(String userId, String fieldKey, Object? value)",
+      "source": "lib/src/passports.dart",
+      "line": 64,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.passports",
+      "name": "recomputeFields",
+      "signature": "Future<JsonMap> recomputeFields(String userId)",
+      "source": "lib/src/passports.dart",
+      "line": 69,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.passports",
+      "name": "assignTemplate",
+      "signature": "Future<void> assignTemplate(String userId, String templateId)",
+      "source": "lib/src/passports.dart",
+      "line": 72,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.passports",
+      "name": "listTemplates",
+      "signature": "Future<List<PassportTemplate>> listTemplates()",
+      "source": "lib/src/passports.dart",
+      "line": 77,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.passports",
+      "name": "getTemplate",
+      "signature": "Future<PassportTemplate> getTemplate(String templateId)",
+      "source": "lib/src/passports.dart",
+      "line": 80,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.passports",
+      "name": "createTemplate",
+      "signature": "Future<PassportTemplate> createTemplate(CreateTemplateRequest data)",
+      "source": "lib/src/passports.dart",
+      "line": 84,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.passports",
+      "name": "addTemplateField",
+      "signature": "Future<TemplateField> addTemplateField(String templateId, CreateTemplateFieldRequest field)",
+      "source": "lib/src/passports.dart",
+      "line": 88,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.passports",
+      "name": "deleteTemplate",
+      "signature": "Future<void> deleteTemplate(String templateId)",
+      "source": "lib/src/passports.dart",
+      "line": 94,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.passports",
+      "name": "listBadges",
+      "signature": "Future<List<Badge>> listBadges()",
+      "source": "lib/src/passports.dart",
+      "line": 98,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.passports",
+      "name": "createBadge",
+      "signature": "Future<Badge> createBadge(CreateBadgeRequest data)",
+      "source": "lib/src/passports.dart",
+      "line": 101,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.passports",
+      "name": "awardBadge",
+      "signature": "Future<UserBadge> awardBadge(String userId, String badgeId, [JsonMap? metadata])",
+      "source": "lib/src/passports.dart",
+      "line": 104,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.passports",
+      "name": "getUserBadges",
+      "signature": "Future<List<UserBadge>> getUserBadges(String userId)",
+      "source": "lib/src/passports.dart",
+      "line": 112,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.passports",
+      "name": "listAchievements",
+      "signature": "Future<List<Achievement>> listAchievements()",
+      "source": "lib/src/passports.dart",
+      "line": 115,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.passports",
+      "name": "createAchievement",
+      "signature": "Future<Achievement> createAchievement(CreateAchievementRequest data)",
+      "source": "lib/src/passports.dart",
+      "line": 118,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.passports",
+      "name": "getUserAchievements",
+      "signature": "Future<List<UserAchievement>> getUserAchievements(String userId)",
+      "source": "lib/src/passports.dart",
+      "line": 122,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.passports",
+      "name": "updateAchievementProgress",
+      "signature": "Future<UserAchievement> updateAchievementProgress(String userId, String achievementId, num progress)",
+      "source": "lib/src/passports.dart",
+      "line": 126,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.passports",
+      "name": "getHistory",
+      "signature": "Future<List<PassportHistory>> getHistory(String userId, [ListOptions options = const ListOptions()])",
+      "source": "lib/src/passports.dart",
+      "line": 133,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.passports",
+      "name": "getPassportV2",
+      "signature": "Future<PassportV2Data> getPassportV2(String userId, [String? passportId])",
+      "source": "lib/src/passports.dart",
+      "line": 139,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.passports",
+      "name": "getPassportView",
+      "signature": "Future<PassportV2Data> getPassportView(String userId, [String? passportId])",
+      "source": "lib/src/passports.dart",
+      "line": 146,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.passports",
+      "name": "getMilestones",
+      "signature": "Future<List<Milestone>> getMilestones(String userId, [String? passportId])",
+      "source": "lib/src/passports.dart",
+      "line": 149,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.passports",
+      "name": "listAvailableViews",
+      "signature": "Future<List<AvailableView>> listAvailableViews()",
+      "source": "lib/src/passports.dart",
+      "line": 157,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.passports",
+      "name": "listPassportDefinitions",
+      "signature": "Future<List<PassportDefinition>> listPassportDefinitions()",
+      "source": "lib/src/passports.dart",
+      "line": 160,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.passports",
+      "name": "createPassportDefinition",
+      "signature": "Future<PassportDefinition> createPassportDefinition(CreatePassportDefinitionRequest definition)",
+      "source": "lib/src/passports.dart",
+      "line": 164,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.wallets",
+      "name": "create",
+      "signature": "Future<Wallet> create(CreateWalletRequest data)",
+      "source": "lib/src/wallets.dart",
+      "line": 9,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.wallets",
+      "name": "get",
+      "signature": "Future<Wallet> get(String walletId)",
+      "source": "lib/src/wallets.dart",
+      "line": 11,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.wallets",
+      "name": "listByUser",
+      "signature": "Future<List<Wallet>> listByUser(String userId)",
+      "source": "lib/src/wallets.dart",
+      "line": 13,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.wallets",
+      "name": "stats",
+      "signature": "Future<WalletStats> stats()",
+      "source": "lib/src/wallets.dart",
+      "line": 16,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.wallets",
+      "name": "listUsersWithWallets",
+      "signature": "Future<UsersWithWalletsResponse> listUsersWithWallets([num limit = 50, num offset = 0])",
+      "source": "lib/src/wallets.dart",
+      "line": 18,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.wallets",
+      "name": "createDual",
+      "signature": "Future<DualWallets> createDual(CreateDualWalletsRequest data)",
+      "source": "lib/src/wallets.dart",
+      "line": 24,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.wallets",
+      "name": "createDualBulk",
+      "signature": "Future<List<DualWallets>> createDualBulk(List<String> userIds, [String network = 'base-mainnet'])",
+      "source": "lib/src/wallets.dart",
+      "line": 26,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.wallets",
+      "name": "getBalance",
+      "signature": "Future<WalletBalanceResponse> getBalance(String walletId)",
+      "source": "lib/src/wallets.dart",
+      "line": 32,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.wallets",
+      "name": "getInfo",
+      "signature": "Future<ComprehensiveWalletInfo> getInfo(String walletId, [JsonMap options = const {}])",
+      "source": "lib/src/wallets.dart",
+      "line": 35,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.wallets",
+      "name": "getUserSummary",
+      "signature": "Future<UserWalletSummary> getUserSummary(String userId, [bool includeBalances = true])",
+      "source": "lib/src/wallets.dart",
+      "line": 54,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.wallets",
+      "name": "exportKey",
+      "signature": "Future<JsonMap> exportKey(String walletId)",
+      "source": "lib/src/wallets.dart",
+      "line": 60,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.wallets",
+      "name": "transfer",
+      "signature": "Future<TransferResult> transfer(TransferRequest request)",
+      "source": "lib/src/wallets.dart",
+      "line": 62,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.wallets",
+      "name": "getSwapQuote",
+      "signature": "Future<SwapQuote> getSwapQuote(SwapQuoteRequest request)",
+      "source": "lib/src/wallets.dart",
+      "line": 64,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.wallets",
+      "name": "executeSwap",
+      "signature": "Future<SwapResult> executeSwap(ExecuteSwapRequest request)",
+      "source": "lib/src/wallets.dart",
+      "line": 66,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.wallets",
+      "name": "getNFTs",
+      "signature": "Future<List<NFT>> getNFTs(String walletId)",
+      "source": "lib/src/wallets.dart",
+      "line": 69,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.wallets",
+      "name": "getUserNFTs",
+      "signature": "Future<List<NFT>> getUserNFTs(String userId)",
+      "source": "lib/src/wallets.dart",
+      "line": 71,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.wallets",
+      "name": "addNFT",
+      "signature": "Future<NFT> addNFT(String walletId, AddNFTRequest nft)",
+      "source": "lib/src/wallets.dart",
+      "line": 74,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.wallets",
+      "name": "getTransactions",
+      "signature": "Future<TransactionHistory> getTransactions(String walletId, [JsonMap options = const {}])",
+      "source": "lib/src/wallets.dart",
+      "line": 76,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.wallets",
+      "name": "createToken",
+      "signature": "Future<Token> createToken(CreateTokenRequest request)",
+      "source": "lib/src/wallets.dart",
+      "line": 89,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.wallets",
+      "name": "listTokens",
+      "signature": "Future<List<Token>> listTokens([JsonMap options = const {}])",
+      "source": "lib/src/wallets.dart",
+      "line": 91,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.wallets",
+      "name": "listGlobalTokens",
+      "signature": "Future<List<Token>> listGlobalTokens([String? network])",
+      "source": "lib/src/wallets.dart",
+      "line": 103,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.wallets",
+      "name": "getToken",
+      "signature": "Future<Token> getToken(String tokenId)",
+      "source": "lib/src/wallets.dart",
+      "line": 107,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.wallets",
+      "name": "getTokenByContract",
+      "signature": "Future<Token> getTokenByContract(String contractAddress, String network)",
+      "source": "lib/src/wallets.dart",
+      "line": 109,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.wallets",
+      "name": "updateToken",
+      "signature": "Future<Token> updateToken(String tokenId, UpdateTokenRequest request)",
+      "source": "lib/src/wallets.dart",
+      "line": 115,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.wallets",
+      "name": "deleteToken",
+      "signature": "Future<JsonMap> deleteToken(String tokenId)",
+      "source": "lib/src/wallets.dart",
+      "line": 118,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.users",
+      "name": "list",
+      "signature": "Future<EndUserListResponse> list([ListEndUsersOptions options = const ListEndUsersOptions()])",
+      "source": "lib/src/users.dart",
+      "line": 20,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.users",
+      "name": "get",
+      "signature": "Future<EndUser> get(String externalId)",
+      "source": "lib/src/users.dart",
+      "line": 37,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.users",
+      "name": "getByInternalId",
+      "signature": "Future<EndUser> getByInternalId(String userId)",
+      "source": "lib/src/users.dart",
+      "line": 40,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.users",
+      "name": "create",
+      "signature": "Future<EndUser> create(CreateEndUserRequest data)",
+      "source": "lib/src/users.dart",
+      "line": 43,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.users",
+      "name": "update",
+      "signature": "Future<EndUser> update(String externalId, UpdateEndUserRequest data)",
+      "source": "lib/src/users.dart",
+      "line": 46,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.users",
+      "name": "delete",
+      "signature": "Future<void> delete(String userId)",
+      "source": "lib/src/users.dart",
+      "line": 50,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.users",
+      "name": "linkWallet",
+      "signature": "Future<EndUser> linkWallet(String externalId, LinkWalletRequest request)",
+      "source": "lib/src/users.dart",
+      "line": 54,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.users",
+      "name": "getActivity",
+      "signature": "Future<UserActivityResponse> getActivity(String externalId, [JsonMap options = const {}])",
+      "source": "lib/src/users.dart",
+      "line": 60,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.users",
+      "name": "addPoints",
+      "signature": "Future<EndUser> addPoints(String externalId, num points, [String? reason])",
+      "source": "lib/src/users.dart",
+      "line": 67,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.users",
+      "name": "merge",
+      "signature": "Future<EndUser> merge(MergeUsersRequest request)",
+      "source": "lib/src/users.dart",
+      "line": 79,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.users",
+      "name": "updateByInternalId",
+      "signature": "Future<EndUser> updateByInternalId(String userId, UpdateEndUserRequest data)",
+      "source": "lib/src/users.dart",
+      "line": 82,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.users",
+      "name": "getRewards",
+      "signature": "Future<UserRewardsResponse> getRewards(String externalId, [JsonMap options = const {}])",
+      "source": "lib/src/users.dart",
+      "line": 87,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.users",
+      "name": "getRewardsByInternalId",
+      "signature": "Future<UserRewardsResponse> getRewardsByInternalId(String userId, [JsonMap options = const {}])",
+      "source": "lib/src/users.dart",
+      "line": 94,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.users",
+      "name": "createWallet",
+      "signature": "Future<WalletCreationResult> createWallet(String externalId, [CreateUserWalletRequest request = const CreateUserWalletRequest()])",
+      "source": "lib/src/users.dart",
+      "line": 101,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.users",
+      "name": "registerWallet",
+      "signature": "Future<WalletCreationResult> registerWallet(String externalId, RegisterWalletRequest request)",
+      "source": "lib/src/users.dart",
+      "line": 109,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.users",
+      "name": "ensureWallet",
+      "signature": "Future<EnsureWalletResult> ensureWallet(String externalId, [String network = 'base-mainnet'])",
+      "source": "lib/src/users.dart",
+      "line": 116,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.users",
+      "name": "updateAttributes",
+      "signature": "Future<EndUser> updateAttributes(String externalId, JsonMap attributes)",
+      "source": "lib/src/users.dart",
+      "line": 184,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.users",
+      "name": "removeAttributes",
+      "signature": "Future<EndUser> removeAttributes(String externalId, List<String> keys)",
+      "source": "lib/src/users.dart",
+      "line": 191,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.users",
+      "name": "setProfile",
+      "signature": "Future<EndUser> setProfile(String externalId, SetProfileRequest profile)",
+      "source": "lib/src/users.dart",
+      "line": 202,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.users",
+      "name": "gdprPreview",
+      "signature": "Future<GDPRPreviewResponse> gdprPreview(String userId)",
+      "source": "lib/src/users.dart",
+      "line": 207,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.users",
+      "name": "gdprDelete",
+      "signature": "Future<GDPRDeletionResponse> gdprDelete(String userId, GDPRDeletionRequest request)",
+      "source": "lib/src/users.dart",
+      "line": 211,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.users",
+      "name": "export",
+      "signature": "Future<Uint8List> export([JsonMap options = const {}])",
+      "source": "lib/src/users.dart",
+      "line": 218,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.rewards",
+      "name": "listDefinitions",
+      "signature": "Future<List<RewardDefinition>> listDefinitions([ListRewardsOptions? options])",
+      "source": "lib/src/rewards.dart",
+      "line": 10,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.rewards",
+      "name": "getDefinition",
+      "signature": "Future<RewardDefinition> getDefinition(String definitionId)",
+      "source": "lib/src/rewards.dart",
+      "line": 22,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.rewards",
+      "name": "createDefinition",
+      "signature": "Future<RewardDefinition> createDefinition(CreateRewardDefinitionRequest data)",
+      "source": "lib/src/rewards.dart",
+      "line": 25,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.rewards",
+      "name": "updateDefinition",
+      "signature": "Future<RewardDefinition> updateDefinition(String definitionId, JsonMap data)",
+      "source": "lib/src/rewards.dart",
+      "line": 29,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.rewards",
+      "name": "deleteDefinition",
+      "signature": "Future<void> deleteDefinition(String definitionId)",
+      "source": "lib/src/rewards.dart",
+      "line": 33,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.rewards",
+      "name": "activateDefinition",
+      "signature": "Future<RewardDefinition> activateDefinition(String definitionId)",
+      "source": "lib/src/rewards.dart",
+      "line": 37,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.rewards",
+      "name": "deactivateDefinition",
+      "signature": "Future<RewardDefinition> deactivateDefinition(String definitionId)",
+      "source": "lib/src/rewards.dart",
+      "line": 42,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.rewards",
+      "name": "listEarned",
+      "signature": "Future<List<EarnedReward>> listEarned([JsonMap options = const {}])",
+      "source": "lib/src/rewards.dart",
+      "line": 47,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.rewards",
+      "name": "getUserRewards",
+      "signature": "Future<List<RewardUserReward>> getUserRewards(String userId, [JsonMap options = const {}])",
+      "source": "lib/src/rewards.dart",
+      "line": 62,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.rewards",
+      "name": "getCatalog",
+      "signature": "Future<List<RewardDefinition>> getCatalog([String? category])",
+      "source": "lib/src/rewards.dart",
+      "line": 75,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.rewards",
+      "name": "claimNFT",
+      "signature": "Future<ClaimNFTResult> claimNFT(String earnedRewardId, String walletAddress)",
+      "source": "lib/src/rewards.dart",
+      "line": 82,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.rewards",
+      "name": "claimReward",
+      "signature": "Future<ClaimNFTResult> claimReward(String earnedRewardId, String walletAddress)",
+      "source": "lib/src/rewards.dart",
+      "line": 89,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.rewards",
+      "name": "award",
+      "signature": "Future<List<EarnedReward>> award(ManualRewardRequest request)",
+      "source": "lib/src/rewards.dart",
+      "line": 92,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.rewards",
+      "name": "awardManual",
+      "signature": "Future<List<EarnedReward>> awardManual(ManualRewardRequest request)",
+      "source": "lib/src/rewards.dart",
+      "line": 95,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.rewards",
+      "name": "distribute",
+      "signature": "Future<DistributeResult> distribute(String earnedRewardId)",
+      "source": "lib/src/rewards.dart",
+      "line": 97,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.rewards",
+      "name": "distributePending",
+      "signature": "Future<DistributeResult> distributePending(String earnedRewardId)",
+      "source": "lib/src/rewards.dart",
+      "line": 103,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.rewards",
+      "name": "distributeAll",
+      "signature": "Future<JsonMap> distributeAll()",
+      "source": "lib/src/rewards.dart",
+      "line": 105,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.rewards",
+      "name": "revoke",
+      "signature": "Future<RevokeResult> revoke(String earnedRewardId, String reason)",
+      "source": "lib/src/rewards.dart",
+      "line": 107,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.rewards",
+      "name": "uploadAsset",
+      "signature": "Future<RewardAsset> uploadAsset(String definitionId, UploadFile file, String assetType)",
+      "source": "lib/src/rewards.dart",
+      "line": 113,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.rewards",
+      "name": "listAssets",
+      "signature": "Future<List<RewardAsset>> listAssets(String definitionId)",
+      "source": "lib/src/rewards.dart",
+      "line": 121,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.rewards",
+      "name": "attest",
+      "signature": "Future<RewardAttestationResult> attest(String earnedRewardId)",
+      "source": "lib/src/rewards.dart",
+      "line": 124,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.rewards",
+      "name": "anchor",
+      "signature": "Future<AnchorResult> anchor(String earnedRewardId)",
+      "source": "lib/src/rewards.dart",
+      "line": 128,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.rewards",
+      "name": "getAttestation",
+      "signature": "Future<RewardAttestationResult> getAttestation(String earnedRewardId)",
+      "source": "lib/src/rewards.dart",
+      "line": 131,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.rewards",
+      "name": "verifyAttestation",
+      "signature": "Future<RewardVerifyResult> verifyAttestation(String earnedRewardId)",
+      "source": "lib/src/rewards.dart",
+      "line": 134,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.quests",
+      "name": "list",
+      "signature": "Future<List<Quest>> list([ListQuestsOptions options = const ListQuestsOptions()])",
+      "source": "lib/src/quests.dart",
+      "line": 10,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.quests",
+      "name": "get",
+      "signature": "Future<Quest> get(String questId)",
+      "source": "lib/src/quests.dart",
+      "line": 24,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.quests",
+      "name": "listAvailable",
+      "signature": "Future<List<QuestWithProgress>> listAvailable(String userId, [JsonMap options = const {}])",
+      "source": "lib/src/quests.dart",
+      "line": 27,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.quests",
+      "name": "create",
+      "signature": "Future<Quest> create(CreateQuestRequest data)",
+      "source": "lib/src/quests.dart",
+      "line": 37,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.quests",
+      "name": "update",
+      "signature": "Future<Quest> update(String questId, JsonMap data)",
+      "source": "lib/src/quests.dart",
+      "line": 40,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.quests",
+      "name": "delete",
+      "signature": "Future<void> delete(String questId)",
+      "source": "lib/src/quests.dart",
+      "line": 43,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.quests",
+      "name": "publish",
+      "signature": "Future<Quest> publish(String questId)",
+      "source": "lib/src/quests.dart",
+      "line": 47,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.quests",
+      "name": "activate",
+      "signature": "Future<Quest> activate(String questId)",
+      "source": "lib/src/quests.dart",
+      "line": 51,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.quests",
+      "name": "pause",
+      "signature": "Future<Quest> pause(String questId)",
+      "source": "lib/src/quests.dart",
+      "line": 53,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.quests",
+      "name": "getWithProgress",
+      "signature": "Future<QuestWithProgress> getWithProgress(String questId, String userId)",
+      "source": "lib/src/quests.dart",
+      "line": 57,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.quests",
+      "name": "listWithProgress",
+      "signature": "Future<List<QuestWithProgress>> listWithProgress(String userId, [ListQuestsOptions options = const ListQuestsOptions()])",
+      "source": "lib/src/quests.dart",
+      "line": 69,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.quests",
+      "name": "startQuest",
+      "signature": "Future<UserQuestProgress> startQuest(String questId, String userId)",
+      "source": "lib/src/quests.dart",
+      "line": 73,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.quests",
+      "name": "resolveCtaLink",
+      "signature": "Future<QuestCtaLink> resolveCtaLink(Object quest, [String? userId])",
+      "source": "lib/src/quests.dart",
+      "line": 80,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.quests",
+      "name": "listCtaResolvers",
+      "signature": "Future<List<QuestCtaResolver>> listCtaResolvers()",
+      "source": "lib/src/quests.dart",
+      "line": 100,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.quests",
+      "name": "getUserProgress",
+      "signature": "Future<UserQuestProgress> getUserProgress(String questId, String userId)",
+      "source": "lib/src/quests.dart",
+      "line": 103,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.quests",
+      "name": "startStep",
+      "signature": "Future<StepStartResult> startStep(String questId, String userId, num stepIndex)",
+      "source": "lib/src/quests.dart",
+      "line": 110,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.quests",
+      "name": "completeStep",
+      "signature": "Future<StepCompletionResult> completeStep(String questId, String userId, num stepIndex)",
+      "source": "lib/src/quests.dart",
+      "line": 118,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.quests",
+      "name": "getAllUserProgress",
+      "signature": "Future<List<UserQuestProgress>> getAllUserProgress(String userId)",
+      "source": "lib/src/quests.dart",
+      "line": 126,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.quests",
+      "name": "claimReward",
+      "signature": "Future<ClaimRewardResult> claimReward(String questId, String userId)",
+      "source": "lib/src/quests.dart",
+      "line": 131,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.quests",
+      "name": "addStep",
+      "signature": "Future<QuestStep> addStep(String questId, CreateQuestStepRequest step)",
+      "source": "lib/src/quests.dart",
+      "line": 162,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.quests",
+      "name": "updateStep",
+      "signature": "Future<QuestStep> updateStep(String questId, String stepId, JsonMap data)",
+      "source": "lib/src/quests.dart",
+      "line": 184,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.quests",
+      "name": "deleteStep",
+      "signature": "Future<void> deleteStep(String questId, String stepId)",
+      "source": "lib/src/quests.dart",
+      "line": 199,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.quests",
+      "name": "reorderSteps",
+      "signature": "Future<Quest> reorderSteps(String questId, List<String> stepIds)",
+      "source": "lib/src/quests.dart",
+      "line": 209,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.schemas",
+      "name": "list",
+      "signature": "Future<SchemaListResponse> list([ListSchemasOptions? options])",
+      "source": "lib/src/schemas.dart",
+      "line": 9,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.schemas",
+      "name": "get",
+      "signature": "Future<SchemaDetail> get(String name, [String? version])",
+      "source": "lib/src/schemas.dart",
+      "line": 24,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.schemas",
+      "name": "create",
+      "signature": "Future<SchemaDetail> create(String yamlContent)",
+      "source": "lib/src/schemas.dart",
+      "line": 27,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.schemas",
+      "name": "update",
+      "signature": "Future<SchemaDetail> update(String name, String yamlContent)",
+      "source": "lib/src/schemas.dart",
+      "line": 31,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.schemas",
+      "name": "delete",
+      "signature": "Future<void> delete(String name, [String? version])",
+      "source": "lib/src/schemas.dart",
+      "line": 39,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.schemas",
+      "name": "activate",
+      "signature": "Future<Schema> activate(String name, [String? version])",
+      "source": "lib/src/schemas.dart",
+      "line": 43,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.schemas",
+      "name": "deprecate",
+      "signature": "Future<Schema> deprecate(String name, [String? version])",
+      "source": "lib/src/schemas.dart",
+      "line": 46,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.schemas",
+      "name": "setDefault",
+      "signature": "Future<Schema> setDefault(String name, String version)",
+      "source": "lib/src/schemas.dart",
+      "line": 50,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.schemas",
+      "name": "validate",
+      "signature": "Future<ValidationResult> validate(ValidateDataRequest request)",
+      "source": "lib/src/schemas.dart",
+      "line": 57,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.schemas",
+      "name": "validateMultiple",
+      "signature": "Future<List<ValidationResult>> validateMultiple(List<String> schemaNames, JsonMap data)",
+      "source": "lib/src/schemas.dart",
+      "line": 61,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.schemas",
+      "name": "getUsageStats",
+      "signature": "Future<JsonMap> getUsageStats(String name)",
+      "source": "lib/src/schemas.dart",
+      "line": 71,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.schemas",
+      "name": "clone",
+      "signature": "Future<SchemaDetail> clone(String sourceName, String newName, [String? newVersion])",
+      "source": "lib/src/schemas.dart",
+      "line": 74,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.dataViews",
+      "name": "list",
+      "signature": "Future<DataViewListResponse> list()",
+      "source": "lib/src/dataviews.dart",
+      "line": 9,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.dataViews",
+      "name": "get",
+      "signature": "Future<DataViewDetail> get(String viewName)",
+      "source": "lib/src/dataviews.dart",
+      "line": 12,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.dataViews",
+      "name": "create",
+      "signature": "Future<DataViewDetail> create(CreateDataViewRequest request)",
+      "source": "lib/src/dataviews.dart",
+      "line": 16,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.dataViews",
+      "name": "update",
+      "signature": "Future<DataViewDetail> update(String viewName, UpdateDataViewRequest request)",
+      "source": "lib/src/dataviews.dart",
+      "line": 20,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.dataViews",
+      "name": "delete",
+      "signature": "Future<void> delete(String viewName)",
+      "source": "lib/src/dataviews.dart",
+      "line": 26,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.dataViews",
+      "name": "execute",
+      "signature": "Future<DataViewExecuteResult> execute(String identifier, String viewName)",
+      "source": "lib/src/dataviews.dart",
+      "line": 30,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.dataViews",
+      "name": "preview",
+      "signature": "Future<DataViewPreviewResult> preview(DataViewPreviewRequest request)",
+      "source": "lib/src/dataviews.dart",
+      "line": 36,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.dataViews",
+      "name": "getFanProfile",
+      "signature": "Future<FanProfileView> getFanProfile(String walletAddress)",
+      "source": "lib/src/dataviews.dart",
+      "line": 40,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.dataViews",
+      "name": "getActivitySummary",
+      "signature": "Future<ActivitySummaryView> getActivitySummary(String walletAddress, [num days = 30])",
+      "source": "lib/src/dataviews.dart",
+      "line": 44,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.dataViews",
+      "name": "getEventMetadata",
+      "signature": "Future<EventMetadata> getEventMetadata()",
+      "source": "lib/src/dataviews.dart",
+      "line": 53,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.dataViews",
+      "name": "getTemplates",
+      "signature": "Future<List<ViewTemplate>> getTemplates()",
+      "source": "lib/src/dataviews.dart",
+      "line": 56,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.cohorts",
+      "name": "list",
+      "signature": "Future<List<CohortDefinition>> list([ListCohortsOptions? options])",
+      "source": "lib/src/cohorts.dart",
+      "line": 11,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.cohorts",
+      "name": "get",
+      "signature": "Future<CohortDefinition> get(String cohortId)",
+      "source": "lib/src/cohorts.dart",
+      "line": 26,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.cohorts",
+      "name": "getLeaderboard",
+      "signature": "Future<CohortLeaderboardResponse> getLeaderboard(String cohortId, [CohortLeaderboardOptions? options])",
+      "source": "lib/src/cohorts.dart",
+      "line": 30,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.cohorts",
+      "name": "getUserBreakdown",
+      "signature": "Future<UserBreakdownResponse> getUserBreakdown(String userId, [JsonMap options = const {}])",
+      "source": "lib/src/cohorts.dart",
+      "line": 48,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.fanpassLeaderboard",
+      "name": "getLeaderboard",
+      "signature": "Future<FanpassLeaderboardResponse> getLeaderboard([FanpassLeaderboardOptions? options])",
+      "source": "lib/src/fanpass_leaderboard.dart",
+      "line": 11,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.fanpassLeaderboard",
+      "name": "getUserComparison",
+      "signature": "Future<FanpassUserComparisonResponse> getUserComparison(String userId, [JsonMap options = const {}])",
+      "source": "lib/src/fanpass_leaderboard.dart",
+      "line": 28,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.fanpassLeaderboard",
+      "name": "listCohorts",
+      "signature": "Future<List<FanpassCohortStatus>> listCohorts([FanpassLeaderboardOptions? options])",
+      "source": "lib/src/fanpass_leaderboard.dart",
+      "line": 40,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.fanpassLeaderboard",
+      "name": "getCohort",
+      "signature": "Future<FanpassCohortStatus?> getCohort(String cohortSlug, [FanpassLeaderboardOptions? options])",
+      "source": "lib/src/fanpass_leaderboard.dart",
+      "line": 44,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.notifications",
+      "name": "subscribe",
+      "signature": "Unsubscribe subscribe(String userId, NotificationCallback callback, [SubscribeOptions options = const SubscribeOptions()])",
+      "source": "lib/src/notifications.dart",
+      "line": 57,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.notifications",
+      "name": "getVapidKey",
+      "signature": "Future<String?> getVapidKey()",
+      "source": "lib/src/notifications.dart",
+      "line": 95,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.notifications",
+      "name": "registerPush",
+      "signature": "Future<JsonMap> registerPush(String userId, PushSubscriptionJSON subscription)",
+      "source": "lib/src/notifications.dart",
+      "line": 106,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.notifications",
+      "name": "unregisterPush",
+      "signature": "Future<JsonMap> unregisterPush(String userId, String endpoint)",
+      "source": "lib/src/notifications.dart",
+      "line": 115,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.notifications",
+      "name": "requestPermissionAndSubscribe",
+      "signature": "Future<PushSubscriptionJSON?> requestPermissionAndSubscribe(String userId, [String serviceWorkerPath = '/sw.js'])",
+      "source": "lib/src/notifications.dart",
+      "line": 122,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.notifications",
+      "name": "generateServiceWorker",
+      "signature": "String generateServiceWorker([JsonMap options = const {}])",
+      "source": "lib/src/notifications.dart",
+      "line": 131,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.notifications",
+      "name": "close",
+      "signature": "void close()",
+      "source": "lib/src/notifications.dart",
+      "line": 189,
+      "nativeLifecycle": true
+    },
+    {
+      "owner": "client.credentials",
+      "name": "createType",
+      "signature": "Future<CredentialType> createType(CreateCredentialTypeRequest request)",
+      "source": "lib/src/credentials.dart",
+      "line": 9,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.credentials",
+      "name": "listTypes",
+      "signature": "Future<List<CredentialType>> listTypes([JsonMap? options])",
+      "source": "lib/src/credentials.dart",
+      "line": 13,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.credentials",
+      "name": "getType",
+      "signature": "Future<CredentialType> getType(String typeId)",
+      "source": "lib/src/credentials.dart",
+      "line": 18,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.credentials",
+      "name": "updateType",
+      "signature": "Future<CredentialType> updateType(String typeId, CreateCredentialTypeRequest request)",
+      "source": "lib/src/credentials.dart",
+      "line": 20,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.credentials",
+      "name": "activateType",
+      "signature": "Future<CredentialType> activateType(String typeId)",
+      "source": "lib/src/credentials.dart",
+      "line": 24,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.credentials",
+      "name": "archiveType",
+      "signature": "Future<CredentialType> archiveType(String typeId)",
+      "source": "lib/src/credentials.dart",
+      "line": 27,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.credentials",
+      "name": "issue",
+      "signature": "Future<IssuedCredential> issue(IssueCredentialRequest request)",
+      "source": "lib/src/credentials.dart",
+      "line": 30,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.credentials",
+      "name": "listIssued",
+      "signature": "Future<List<IssuedCredential>> listIssued([ListIssuedCredentialsOptions? options])",
+      "source": "lib/src/credentials.dart",
+      "line": 33,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.credentials",
+      "name": "revoke",
+      "signature": "Future<IssuedCredential> revoke(String credentialId, [String? reason])",
+      "source": "lib/src/credentials.dart",
+      "line": 44,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.credentials",
+      "name": "suspend",
+      "signature": "Future<IssuedCredential> suspend(String credentialId, [String? reason])",
+      "source": "lib/src/credentials.dart",
+      "line": 51,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.credentials",
+      "name": "reinstate",
+      "signature": "Future<IssuedCredential> reinstate(String credentialId)",
+      "source": "lib/src/credentials.dart",
+      "line": 58,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.credentials",
+      "name": "optInUser",
+      "signature": "Future<JsonMap> optInUser(String userExternalId)",
+      "source": "lib/src/credentials.dart",
+      "line": 61,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.credentials",
+      "name": "optOutUser",
+      "signature": "Future<JsonMap> optOutUser(String userExternalId)",
+      "source": "lib/src/credentials.dart",
+      "line": 63,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.credentials",
+      "name": "getUserCredentials",
+      "signature": "Future<UserCredentialsSummary> getUserCredentials(String userExternalId)",
+      "source": "lib/src/credentials.dart",
+      "line": 65,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.credentials",
+      "name": "verify",
+      "signature": "Future<CredentialVerifyResult> verify(String verificationCode)",
+      "source": "lib/src/credentials.dart",
+      "line": 69,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.nft",
+      "name": "mint",
+      "signature": "Future<NFTMint> mint(MintNFTRequest request)",
+      "source": "lib/src/nft.dart",
+      "line": 12,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.nft",
+      "name": "list",
+      "signature": "Future<ListMintsResponse> list([ListMintsOptions? options])",
+      "source": "lib/src/nft.dart",
+      "line": 49,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.nft",
+      "name": "get",
+      "signature": "Future<NFTMint> get(String mintId)",
+      "source": "lib/src/nft.dart",
+      "line": 59,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.partnerKeys",
+      "name": "generate",
+      "signature": "Future<OTTGenerateResponse> generate([OTTGenerateRequest? options])",
+      "source": "lib/src/partner_keys.dart",
+      "line": 9,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.partnerKeys",
+      "name": "redeem",
+      "signature": "Future<OTTRedeemResponse> redeem(String ott)",
+      "source": "lib/src/partner_keys.dart",
+      "line": 13,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.partnerKeys",
+      "name": "updateOTTConfig",
+      "signature": "Future<OTTConfigResponse> updateOTTConfig(String keyId, OTTConfigUpdate config)",
+      "source": "lib/src/partner_keys.dart",
+      "line": 17,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.partnerKeys",
+      "name": "getOTTConfig",
+      "signature": "Future<OTTConfigResponse> getOTTConfig(String keyId)",
+      "source": "lib/src/partner_keys.dart",
+      "line": 22,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.partnerKeys",
+      "name": "requestOTT",
+      "signature": "Future<OTTGenerateResponse> requestOTT(String keyId)",
+      "source": "lib/src/partner_keys.dart",
+      "line": 26,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.attestations",
+      "name": "listSchemas",
+      "signature": "Future<List<AttestationSchema>> listSchemas([JsonMap? options])",
+      "source": "lib/src/attestations.dart",
+      "line": 9,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.attestations",
+      "name": "getSchema",
+      "signature": "Future<AttestationSchema> getSchema(String schemaId)",
+      "source": "lib/src/attestations.dart",
+      "line": 17,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.attestations",
+      "name": "create",
+      "signature": "Future<AttestationRecord> create(CreateAttestationRequest request)",
+      "source": "lib/src/attestations.dart",
+      "line": 21,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.attestations",
+      "name": "list",
+      "signature": "Future<List<AttestationRecord>> list([ListAttestationsOptions? options])",
+      "source": "lib/src/attestations.dart",
+      "line": 25,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.attestations",
+      "name": "listBySubject",
+      "signature": "Future<List<AttestationRecord>> listBySubject(String subjectAddress, [ListAttestationsOptions? options])",
+      "source": "lib/src/attestations.dart",
+      "line": 36,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.attestations",
+      "name": "get",
+      "signature": "Future<AttestationRecord> get(String attestationId)",
+      "source": "lib/src/attestations.dart",
+      "line": 47,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.attestations",
+      "name": "revoke",
+      "signature": "Future<AttestationRecord> revoke(String attestationId, [String? reason])",
+      "source": "lib/src/attestations.dart",
+      "line": 51,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.attestations",
+      "name": "anchor",
+      "signature": "Future<AttestationRecord> anchor(String attestationId)",
+      "source": "lib/src/attestations.dart",
+      "line": 61,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.attestations",
+      "name": "getConfig",
+      "signature": "Future<AttestationConfig> getConfig()",
+      "source": "lib/src/attestations.dart",
+      "line": 65,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.attestations",
+      "name": "updateConfig",
+      "signature": "Future<AttestationConfig> updateConfig(UpdateAttestationConfigRequest request)",
+      "source": "lib/src/attestations.dart",
+      "line": 68,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.attestations",
+      "name": "getWalletCredentials",
+      "signature": "Future<List<WalletCredential>> getWalletCredentials(String walletAddress, [ListWalletCredentialsOptions? options])",
+      "source": "lib/src/attestations.dart",
+      "line": 73,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.attestations",
+      "name": "getWalletCredential",
+      "signature": "Future<WalletCredential> getWalletCredential(String walletAddress, String attestationUid)",
+      "source": "lib/src/attestations.dart",
+      "line": 84,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.attestations",
+      "name": "verifyWalletCredentials",
+      "signature": "Future<WalletCredentialVerifySummary> verifyWalletCredentials(String walletAddress)",
+      "source": "lib/src/attestations.dart",
+      "line": 91,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.airkit",
+      "name": "createSession",
+      "signature": "Future<AirKitSessionResponse> createSession()",
+      "source": "lib/src/airkit.dart",
+      "line": 9,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "IngestionClient",
+      "name": "ingest",
+      "signature": "Future<IngestEventResponse> ingest(IngestEventRequest request)",
+      "source": "lib/src/ingestion.dart",
+      "line": 40,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "IngestionClient",
+      "name": "ingestBatch",
+      "signature": "Future<BatchIngestResponse> ingestBatch(BatchIngestRequest request)",
+      "source": "lib/src/ingestion.dart",
+      "line": 58,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "IngestionClient",
+      "name": "getEventStatus",
+      "signature": "Future<JsonMap> getEventStatus(String eventId)",
+      "source": "lib/src/ingestion.dart",
+      "line": 75,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "EndUserIngestionClient",
+      "name": "setToken",
+      "signature": "void setToken(String userToken)",
+      "source": "lib/src/ingestion.dart",
+      "line": 110,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "EndUserIngestionClient",
+      "name": "ingest",
+      "signature": "Future<IngestEventResponse> ingest(IngestEventRequest request)",
+      "source": "lib/src/ingestion.dart",
+      "line": 122,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "EndUserIngestionClient",
+      "name": "ingestBatch",
+      "signature": "Future<BatchIngestResponse> ingestBatch(BatchIngestRequest request)",
+      "source": "lib/src/ingestion.dart",
+      "line": 136,
+      "nativeLifecycle": false
+    }
+  ],
+  "modelClasses": [
+    {
+      "name": "AirKitSessionResponse",
+      "required": [
+        "String auth_token",
+        "String partner_id",
+        "String build_env",
+        "num expires_in"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 9
+    },
+    {
+      "name": "AttestationSchema",
+      "required": [
+        "String id",
+        "String name",
+        "String slug",
+        "String attestation_type",
+        "Map<String, Object?> schema_definition",
+        "bool revocable",
+        "num version",
+        "bool is_active",
+        "String created_at"
+      ],
+      "optionalCount": 4,
+      "source": "lib/src/models.dart",
+      "line": 79
+    },
+    {
+      "name": "AttestationRecord",
+      "required": [
+        "String id",
+        "String uid",
+        "String tenant_id",
+        "String schema_id",
+        "String attester_address",
+        "String attester_type",
+        "String subject_address",
+        "Map<String, Object?> data",
+        "String status",
+        "String created_at"
+      ],
+      "optionalCount": 11,
+      "source": "lib/src/models.dart",
+      "line": 203
+    },
+    {
+      "name": "WalletCredential",
+      "required": [
+        "String uid",
+        "String subject_address",
+        "Map<String, Object?> data",
+        "String status",
+        "String created_at"
+      ],
+      "optionalCount": 7,
+      "source": "lib/src/models.dart",
+      "line": 387
+    },
+    {
+      "name": "WalletCredentialVerifySummary",
+      "required": [
+        "String wallet_address",
+        "num total_credentials",
+        "Map<String, num> credential_types",
+        "Map<String, Object?> latest_scores",
+        "bool is_verified"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 508
+    },
+    {
+      "name": "AttestationConfig",
+      "required": [
+        "String id",
+        "String tenant_id",
+        "bool auto_attest_passports",
+        "bool auto_attest_cohort_scores",
+        "bool attest_on_score_change",
+        "num min_score_change_threshold",
+        "bool anchor_attestations",
+        "String reward_anchoring_mode",
+        "bool public_attestations"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 584
+    },
+    {
+      "name": "CreateAttestationRequest",
+      "required": [
+        "String schema_id",
+        "String subject_address",
+        "Map<String, Object?> data"
+      ],
+      "optionalCount": 4,
+      "source": "lib/src/models.dart",
+      "line": 687
+    },
+    {
+      "name": "ListAttestationsOptions",
+      "required": [],
+      "optionalCount": 3,
+      "source": "lib/src/models.dart",
+      "line": 771
+    },
+    {
+      "name": "ListWalletCredentialsOptions",
+      "required": [],
+      "optionalCount": 3,
+      "source": "lib/src/models.dart",
+      "line": 824
+    },
+    {
+      "name": "UpdateAttestationConfigRequest",
+      "required": [],
+      "optionalCount": 6,
+      "source": "lib/src/models.dart",
+      "line": 877
+    },
+    {
+      "name": "AttestationResult",
+      "required": [
+        "String id",
+        "String ipfsHash",
+        "String documentHash",
+        "String gatewayUrl",
+        "String verifyUrl",
+        "String certificateId",
+        "EventStatus status",
+        "AttestationMode attestationMode",
+        "String timestamp"
+      ],
+      "optionalCount": 2,
+      "source": "lib/src/models.dart",
+      "line": 980
+    },
+    {
+      "name": "Event",
+      "required": [
+        "String id",
+        "String eventType",
+        "String userId",
+        "String ipfsHash",
+        "String gatewayUrl",
+        "String certificateId",
+        "EventStatus status",
+        "AttestationMode attestationMode",
+        "String timestamp"
+      ],
+      "optionalCount": 5,
+      "source": "lib/src/models.dart",
+      "line": 1096
+    },
+    {
+      "name": "Channel",
+      "required": [
+        "String channelId",
+        "String name",
+        "ChannelState state",
+        "String createdAt"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 1227
+    },
+    {
+      "name": "ChannelStatus",
+      "required": [
+        "String channelId",
+        "String name",
+        "ChannelState state",
+        "num eventCount",
+        "num syncedCount",
+        "num pendingCount",
+        "String createdAt"
+      ],
+      "optionalCount": 3,
+      "source": "lib/src/models.dart",
+      "line": 1287
+    },
+    {
+      "name": "Settlement",
+      "required": [
+        "String channelId",
+        "String txHash",
+        "String merkleRoot",
+        "num eventCount",
+        "num blockNumber",
+        "num gasUsed",
+        "String settledAt"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 1392
+    },
+    {
+      "name": "Certificate",
+      "required": [
+        "String certificateId",
+        "String recipientName",
+        "String title",
+        "String ipfsHash",
+        "String verifyUrl",
+        "String qrCodeUrl",
+        "String issuedAt",
+        "bool revoked"
+      ],
+      "optionalCount": 7,
+      "source": "lib/src/models.dart",
+      "line": 1473
+    },
+    {
+      "name": "Webhook",
+      "required": [
+        "String id",
+        "String url",
+        "List<String> events",
+        "bool active",
+        "String createdAt",
+        "num failureCount"
+      ],
+      "optionalCount": 1,
+      "source": "lib/src/models.dart",
+      "line": 1617
+    },
+    {
+      "name": "VerificationResult",
+      "required": [
+        "bool valid",
+        "String ipfsHash",
+        "bool proofVerified",
+        "String message"
+      ],
+      "optionalCount": 6,
+      "source": "lib/src/models.dart",
+      "line": 1701
+    },
+    {
+      "name": "SearchResult",
+      "required": [
+        "num total",
+        "num page",
+        "num limit",
+        "List<Event> events"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 1809
+    },
+    {
+      "name": "UsageStats",
+      "required": [
+        "String periodStart",
+        "String periodEnd",
+        "num eventsCreated",
+        "num documentsAttested",
+        "num verifications",
+        "num apiCalls",
+        "num storageBytes",
+        "num channelsCreated",
+        "num settlements"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 1871
+    },
+    {
+      "name": "TenantInfo",
+      "required": [
+        "String tenantId",
+        "String name",
+        "String subdomain",
+        "String plan",
+        "String createdAt",
+        "num apiKeysCount",
+        "num eventsCount",
+        "num storageUsedBytes"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 1969
+    },
+    {
+      "name": "StreamAck",
+      "required": [
+        "num sequence",
+        "String channelId",
+        "bool received"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 2058
+    },
+    {
+      "name": "AttestRequest",
+      "required": [
+        "UploadFile file",
+        "String userId"
+      ],
+      "optionalCount": 4,
+      "source": "lib/src/models.dart",
+      "line": 2111
+    },
+    {
+      "name": "CreateEventRequest",
+      "required": [
+        "String eventType",
+        "String userId"
+      ],
+      "optionalCount": 2,
+      "source": "lib/src/models.dart",
+      "line": 2188
+    },
+    {
+      "name": "ListEventsRequest",
+      "required": [],
+      "optionalCount": 7,
+      "source": "lib/src/models.dart",
+      "line": 2247
+    },
+    {
+      "name": "SearchRequest",
+      "required": [
+        "String query"
+      ],
+      "optionalCount": 6,
+      "source": "lib/src/models.dart",
+      "line": 2325
+    },
+    {
+      "name": "CreateChannelRequest",
+      "required": [
+        "String name"
+      ],
+      "optionalCount": 1,
+      "source": "lib/src/models.dart",
+      "line": 2403
+    },
+    {
+      "name": "StreamEventRequest",
+      "required": [
+        "String eventType",
+        "String userId"
+      ],
+      "optionalCount": 2,
+      "source": "lib/src/models.dart",
+      "line": 2448
+    },
+    {
+      "name": "IssueCertificateRequest",
+      "required": [
+        "String recipientName",
+        "String title"
+      ],
+      "optionalCount": 4,
+      "source": "lib/src/models.dart",
+      "line": 2507
+    },
+    {
+      "name": "ListCertificatesRequest",
+      "required": [],
+      "optionalCount": 3,
+      "source": "lib/src/models.dart",
+      "line": 2585
+    },
+    {
+      "name": "CreateWebhookRequest",
+      "required": [
+        "String url",
+        "List<String> events"
+      ],
+      "optionalCount": 1,
+      "source": "lib/src/models.dart",
+      "line": 2638
+    },
+    {
+      "name": "UpdateWebhookRequest",
+      "required": [],
+      "optionalCount": 3,
+      "source": "lib/src/models.dart",
+      "line": 2692
+    },
+    {
+      "name": "VaultFile",
+      "required": [
+        "String id",
+        "String filename",
+        "String mimeType",
+        "num size",
+        "String ipfsHash",
+        "String userId",
+        "String accessMode",
+        "String createdAt"
+      ],
+      "optionalCount": 2,
+      "source": "lib/src/models.dart",
+      "line": 2745
+    },
+    {
+      "name": "VaultFolder",
+      "required": [
+        "String id",
+        "String name",
+        "String createdAt"
+      ],
+      "optionalCount": 1,
+      "source": "lib/src/models.dart",
+      "line": 2846
+    },
+    {
+      "name": "VaultListResponse",
+      "required": [
+        "List<VaultFile> files",
+        "List<VaultFolder> folders",
+        "num totalFiles",
+        "num totalSize"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 2906
+    },
+    {
+      "name": "VaultStats",
+      "required": [
+        "num totalFiles",
+        "num totalFolders",
+        "num totalSize",
+        "num usedQuota",
+        "num maxQuota"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 2974
+    },
+    {
+      "name": "VaultUploadRequest",
+      "required": [
+        "UploadFile file",
+        "String userId"
+      ],
+      "optionalCount": 3,
+      "source": "lib/src/models.dart",
+      "line": 3042
+    },
+    {
+      "name": "SearchFilters",
+      "required": [],
+      "optionalCount": 9,
+      "source": "lib/src/models.dart",
+      "line": 3113
+    },
+    {
+      "name": "SearchQueryRequest",
+      "required": [],
+      "optionalCount": 4,
+      "source": "lib/src/models.dart",
+      "line": 3218
+    },
+    {
+      "name": "SearchResponse",
+      "required": [
+        "num total",
+        "num offset",
+        "num limit",
+        "List<Event> results"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 3276
+    },
+    {
+      "name": "PaginationMeta",
+      "required": [
+        "num total",
+        "num page",
+        "num page_size",
+        "num total_pages",
+        "bool has_next",
+        "bool has_prev"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 3338
+    },
+    {
+      "name": "UserEventHistoryResult",
+      "required": [
+        "String id",
+        "String event_type",
+        "String event_source",
+        "String user_id",
+        "String status",
+        "String timestamp",
+        "bool has_blockchain_proof",
+        "String? blockchain_tx_hash",
+        "num? fanscore_v_e",
+        "num? fanscore_event_score",
+        "num? fanscore_contribution",
+        "String? fanscore_cohort",
+        "String? fanscore_subject"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 3410
+    },
+    {
+      "name": "UserEventHistoryResponse",
+      "required": [
+        "List<UserEventHistoryResult> results",
+        "num total",
+        "num offset",
+        "num limit",
+        "num query_time_ms",
+        "PaginationMeta? pagination",
+        "String? retention_warning"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 3555
+    },
+    {
+      "name": "UserEventHistoryOptions",
+      "required": [],
+      "optionalCount": 3,
+      "source": "lib/src/models.dart",
+      "line": 3646
+    },
+    {
+      "name": "Facet",
+      "required": [
+        "String key",
+        "num count"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 3705
+    },
+    {
+      "name": "FacetsResponse",
+      "required": [
+        "List<Facet> eventTypes",
+        "List<Facet> eventSources",
+        "List<Facet> statuses",
+        "List<Facet> users"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 3749
+    },
+    {
+      "name": "SearchStats",
+      "required": [
+        "num periodDays",
+        "num totalEvents",
+        "num uniqueUsers",
+        "num eventsPerDay",
+        "num totalStorageBytes"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 3823
+    },
+    {
+      "name": "CertificateVerifyResult",
+      "required": [
+        "String certificateId",
+        "String status",
+        "String recipientName",
+        "String title",
+        "String issuedAt",
+        "String ipfsHash",
+        "String verifyUrl"
+      ],
+      "optionalCount": 4,
+      "source": "lib/src/models.dart",
+      "line": 3893
+    },
+    {
+      "name": "ProofVerifyResult",
+      "required": [
+        "bool valid",
+        "String message",
+        "String verifiedAt"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 4006
+    },
+    {
+      "name": "BatchVerifyResult",
+      "required": [
+        "String batchId",
+        "String merkleRoot",
+        "num totalEvents",
+        "bool verified"
+      ],
+      "optionalCount": 2,
+      "source": "lib/src/models.dart",
+      "line": 4059
+    },
+    {
+      "name": "EventBatchProof",
+      "required": [
+        "String eventId",
+        "String certificateId",
+        "String batchId",
+        "num leafIndex",
+        "List<String> merkleProof",
+        "String merkleRoot",
+        "bool verified"
+      ],
+      "optionalCount": 1,
+      "source": "lib/src/models.dart",
+      "line": 4134
+    },
+    {
+      "name": "ApiKey",
+      "required": [
+        "String id",
+        "String name",
+        "String keyPrefix",
+        "List<String> permissions",
+        "String createdAt",
+        "bool isActive"
+      ],
+      "optionalCount": 3,
+      "source": "lib/src/models.dart",
+      "line": 4226
+    },
+    {
+      "name": "BlockchainStats",
+      "required": [
+        "num totalTransactions",
+        "num totalGasUsed",
+        "num totalEventsAttested",
+        "num pendingEvents",
+        "num chainId",
+        "String chainName"
+      ],
+      "optionalCount": 2,
+      "source": "lib/src/models.dart",
+      "line": 4322
+    },
+    {
+      "name": "BlockchainProof",
+      "required": [
+        "String certificateId",
+        "bool verified",
+        "String chainName"
+      ],
+      "optionalCount": 5,
+      "source": "lib/src/models.dart",
+      "line": 4417
+    },
+    {
+      "name": "CreateApiKeyRequest",
+      "required": [
+        "String name"
+      ],
+      "optionalCount": 2,
+      "source": "lib/src/models.dart",
+      "line": 4509
+    },
+    {
+      "name": "Passport",
+      "required": [
+        "String id",
+        "String tenant_id",
+        "String user_id",
+        "num level",
+        "num points",
+        "num experience",
+        "Map<String, Object?> traits",
+        "Map<String, Object?> custom_metadata",
+        "String created_at",
+        "String last_updated_at"
+      ],
+      "optionalCount": 3,
+      "source": "lib/src/models.dart",
+      "line": 4564
+    },
+    {
+      "name": "PassportWithFields",
+      "required": [
+        "super.id",
+        "super.tenant_id",
+        "super.user_id",
+        "super.level",
+        "super.points",
+        "super.experience",
+        "super.traits",
+        "super.custom_metadata",
+        "super.created_at",
+        "super.last_updated_at",
+        "List<FieldValue> field_values"
+      ],
+      "optionalCount": 5,
+      "source": "lib/src/models.dart",
+      "line": 4693
+    },
+    {
+      "name": "FieldValue",
+      "required": [
+        "String field_key",
+        "String field_name",
+        "Object? value",
+        "String data_type",
+        "bool manually_set"
+      ],
+      "optionalCount": 1,
+      "source": "lib/src/models.dart",
+      "line": 4766
+    },
+    {
+      "name": "PassportTemplate",
+      "required": [
+        "String id",
+        "String tenant_id",
+        "String name",
+        "String slug",
+        "bool is_default",
+        "bool is_active",
+        "String created_at",
+        "String updated_at",
+        "List<TemplateField> fields"
+      ],
+      "optionalCount": 2,
+      "source": "lib/src/models.dart",
+      "line": 4841
+    },
+    {
+      "name": "TemplateField",
+      "required": [
+        "String id",
+        "String template_id",
+        "String name",
+        "String field_key",
+        "String data_type",
+        "num sort_order",
+        "bool is_visible",
+        "bool is_computed",
+        "String created_at"
+      ],
+      "optionalCount": 9,
+      "source": "lib/src/models.dart",
+      "line": 4952
+    },
+    {
+      "name": "Badge",
+      "required": [
+        "String id",
+        "String tenant_id",
+        "String badge_id",
+        "String name",
+        "String rarity",
+        "Map<String, Object?> requirements",
+        "String created_at"
+      ],
+      "optionalCount": 2,
+      "source": "lib/src/models.dart",
+      "line": 5110
+    },
+    {
+      "name": "Achievement",
+      "required": [
+        "String id",
+        "String tenant_id",
+        "String achievement_id",
+        "String name",
+        "num points_reward",
+        "Map<String, Object?> requirements",
+        "String created_at"
+      ],
+      "optionalCount": 2,
+      "source": "lib/src/models.dart",
+      "line": 5206
+    },
+    {
+      "name": "UserBadge",
+      "required": [
+        "String id",
+        "String passport_id",
+        "String badge_id",
+        "Badge badge",
+        "String earned_at"
+      ],
+      "optionalCount": 1,
+      "source": "lib/src/models.dart",
+      "line": 5304
+    },
+    {
+      "name": "UserAchievement",
+      "required": [
+        "String id",
+        "String passport_id",
+        "String achievement_id",
+        "Achievement achievement",
+        "String earned_at",
+        "num progress",
+        "bool completed"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 5380
+    },
+    {
+      "name": "PassportHistory",
+      "required": [
+        "String id",
+        "String passport_id",
+        "String event_type",
+        "String created_at"
+      ],
+      "optionalCount": 3,
+      "source": "lib/src/models.dart",
+      "line": 5463
+    },
+    {
+      "name": "CreatePassportRequest",
+      "required": [
+        "String user_id"
+      ],
+      "optionalCount": 6,
+      "source": "lib/src/models.dart",
+      "line": 5544
+    },
+    {
+      "name": "UpdatePassportRequest",
+      "required": [],
+      "optionalCount": 6,
+      "source": "lib/src/models.dart",
+      "line": 5627
+    },
+    {
+      "name": "CreateTemplateRequest",
+      "required": [
+        "String name",
+        "String slug"
+      ],
+      "optionalCount": 4,
+      "source": "lib/src/models.dart",
+      "line": 5704
+    },
+    {
+      "name": "CreateTemplateFieldRequest",
+      "required": [
+        "String name",
+        "String field_key"
+      ],
+      "optionalCount": 13,
+      "source": "lib/src/models.dart",
+      "line": 5782
+    },
+    {
+      "name": "CreateBadgeRequest",
+      "required": [
+        "String badge_id",
+        "String name"
+      ],
+      "optionalCount": 4,
+      "source": "lib/src/models.dart",
+      "line": 5920
+    },
+    {
+      "name": "CreateAchievementRequest",
+      "required": [
+        "String achievement_id",
+        "String name"
+      ],
+      "optionalCount": 4,
+      "source": "lib/src/models.dart",
+      "line": 5995
+    },
+    {
+      "name": "ListOptions",
+      "required": [],
+      "optionalCount": 2,
+      "source": "lib/src/models.dart",
+      "line": 6072
+    },
+    {
+      "name": "PassportV2Data",
+      "required": [
+        "String user_id",
+        "PassportDefinition passport",
+        "Map<String, PassportFieldValue> data",
+        "List<Milestone> milestones",
+        "String generated_at"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 6116
+    },
+    {
+      "name": "PassportFieldValue",
+      "required": [
+        "String label",
+        "Object? value"
+      ],
+      "optionalCount": 1,
+      "source": "lib/src/models.dart",
+      "line": 6192
+    },
+    {
+      "name": "PassportDefinition",
+      "required": [
+        "String id",
+        "String tenant_id",
+        "String name",
+        "List<String> display_columns",
+        "Map<String, String> column_labels",
+        "Map<String, String> column_formats",
+        "bool is_default",
+        "bool is_active",
+        "bool is_public",
+        "String created_at",
+        "num threshold_count"
+      ],
+      "optionalCount": 4,
+      "source": "lib/src/models.dart",
+      "line": 6242
+    },
+    {
+      "name": "Milestone",
+      "required": [
+        "String id",
+        "String name",
+        "String milestone_type",
+        "num points_reward",
+        "String triggered_at"
+      ],
+      "optionalCount": 4,
+      "source": "lib/src/models.dart",
+      "line": 6391
+    },
+    {
+      "name": "AvailableView",
+      "required": [
+        "String id",
+        "String name",
+        "String view_name",
+        "bool is_builtin",
+        "List<ViewColumn> columns"
+      ],
+      "optionalCount": 3,
+      "source": "lib/src/models.dart",
+      "line": 6488
+    },
+    {
+      "name": "ViewColumn",
+      "required": [
+        "String name",
+        "String type"
+      ],
+      "optionalCount": 1,
+      "source": "lib/src/models.dart",
+      "line": 6581
+    },
+    {
+      "name": "CreatePassportDefinitionRequest",
+      "required": [
+        "String name"
+      ],
+      "optionalCount": 8,
+      "source": "lib/src/models.dart",
+      "line": 6634
+    },
+    {
+      "name": "Wallet",
+      "required": [
+        "String wallet_id",
+        "String address",
+        "String user_id",
+        "String wallet_type",
+        "String network",
+        "String status",
+        "String created_at"
+      ],
+      "optionalCount": 5,
+      "source": "lib/src/models.dart",
+      "line": 6739
+    },
+    {
+      "name": "DualWallets",
+      "required": [
+        "String user_id",
+        "Wallet asset_wallet",
+        "Wallet smart_wallet",
+        "String network"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 6856
+    },
+    {
+      "name": "WalletBalance",
+      "required": [
+        "String wallet_id",
+        "String address",
+        "String network",
+        "List<TokenBalance> balances"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 6918
+    },
+    {
+      "name": "TokenBalance",
+      "required": [
+        "String token",
+        "String symbol",
+        "String balance",
+        "num decimals",
+        "String source"
+      ],
+      "optionalCount": 5,
+      "source": "lib/src/models.dart",
+      "line": 6981
+    },
+    {
+      "name": "NFT",
+      "required": [
+        "String id",
+        "String wallet_id",
+        "String contract_address",
+        "String token_id",
+        "String network",
+        "String source",
+        "String acquired_at"
+      ],
+      "optionalCount": 4,
+      "source": "lib/src/models.dart",
+      "line": 7081
+    },
+    {
+      "name": "SwapQuote",
+      "required": [
+        "String from_token",
+        "String to_token",
+        "String from_amount",
+        "String to_amount",
+        "String min_to_amount",
+        "String exchange_rate",
+        "String quote_id",
+        "num slippage_bps",
+        "String network",
+        "bool liquidity_available",
+        "String expires_at"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 7189
+    },
+    {
+      "name": "SwapResult",
+      "required": [
+        "String transaction_hash",
+        "String status",
+        "String from_token",
+        "String to_token",
+        "String from_amount",
+        "String to_amount",
+        "String gas_used"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 7302
+    },
+    {
+      "name": "WalletStats",
+      "required": [
+        "num total_wallets",
+        "Map<String, num> by_type",
+        "Map<String, num> by_network"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 7385
+    },
+    {
+      "name": "Transaction",
+      "required": [
+        "String hash",
+        "String type",
+        "String from",
+        "String to",
+        "Object? value",
+        "String asset",
+        "String category",
+        "String block_num",
+        "String timestamp"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 7444
+    },
+    {
+      "name": "TransactionHistory",
+      "required": [
+        "String address",
+        "String network",
+        "num total_sent",
+        "num total_received",
+        "List<Transaction> transactions"
+      ],
+      "optionalCount": 1,
+      "source": "lib/src/models.dart",
+      "line": 7535
+    },
+    {
+      "name": "ComprehensiveWalletInfo",
+      "required": [
+        "String wallet_id",
+        "String address",
+        "String user_id",
+        "String wallet_type",
+        "String network",
+        "String status",
+        "bool supports_export",
+        "String created_at"
+      ],
+      "optionalCount": 8,
+      "source": "lib/src/models.dart",
+      "line": 7612
+    },
+    {
+      "name": "UserWalletSummary",
+      "required": [
+        "String user_id",
+        "num total_wallets",
+        "num total_nfts",
+        "num total_swaps",
+        "List<UserWalletSummaryWalletsItem> wallets"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 7762
+    },
+    {
+      "name": "CreateWalletRequest",
+      "required": [
+        "String user_id"
+      ],
+      "optionalCount": 4,
+      "source": "lib/src/models.dart",
+      "line": 7835
+    },
+    {
+      "name": "CreateDualWalletsRequest",
+      "required": [
+        "String user_id"
+      ],
+      "optionalCount": 2,
+      "source": "lib/src/models.dart",
+      "line": 7901
+    },
+    {
+      "name": "SwapQuoteRequest",
+      "required": [
+        "String from_token",
+        "String to_token",
+        "String from_amount"
+      ],
+      "optionalCount": 2,
+      "source": "lib/src/models.dart",
+      "line": 7952
+    },
+    {
+      "name": "ExecuteSwapRequest",
+      "required": [
+        "String wallet_id",
+        "String from_token",
+        "String to_token",
+        "String from_amount"
+      ],
+      "optionalCount": 2,
+      "source": "lib/src/models.dart",
+      "line": 8020
+    },
+    {
+      "name": "AddNFTRequest",
+      "required": [
+        "String contract_address",
+        "String token_id",
+        "String network"
+      ],
+      "optionalCount": 2,
+      "source": "lib/src/models.dart",
+      "line": 8095
+    },
+    {
+      "name": "TransferRequest",
+      "required": [
+        "String to_address",
+        "String amount"
+      ],
+      "optionalCount": 5,
+      "source": "lib/src/models.dart",
+      "line": 8163
+    },
+    {
+      "name": "TransferResult",
+      "required": [
+        "String tx_hash",
+        "String from",
+        "String to",
+        "String amount",
+        "String token",
+        "String network",
+        "String status"
+      ],
+      "optionalCount": 1,
+      "source": "lib/src/models.dart",
+      "line": 8260
+    },
+    {
+      "name": "Token",
+      "required": [
+        "String id",
+        "String contract_address",
+        "String network",
+        "String symbol",
+        "String name",
+        "num decimals",
+        "String token_standard",
+        "bool is_native_wrapper",
+        "bool is_verified",
+        "bool is_active",
+        "num display_order",
+        "bool is_global"
+      ],
+      "optionalCount": 5,
+      "source": "lib/src/models.dart",
+      "line": 8345
+    },
+    {
+      "name": "CreateTokenRequest",
+      "required": [
+        "String contract_address",
+        "String network",
+        "String symbol",
+        "String name"
+      ],
+      "optionalCount": 8,
+      "source": "lib/src/models.dart",
+      "line": 8498
+    },
+    {
+      "name": "UpdateTokenRequest",
+      "required": [],
+      "optionalCount": 11,
+      "source": "lib/src/models.dart",
+      "line": 8619
+    },
+    {
+      "name": "WalletBalanceResponse",
+      "required": [
+        "String address",
+        "String network",
+        "String native_balance",
+        "String native_symbol",
+        "List<TokenBalance> balances"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 8731
+    },
+    {
+      "name": "UserWithWallets",
+      "required": [
+        "String user_id",
+        "List<UserWithWalletsWalletsItem> wallets"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 8803
+    },
+    {
+      "name": "UsersWithWalletsResponse",
+      "required": [
+        "List<UserWithWallets> users",
+        "num total",
+        "num limit",
+        "num offset"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 8855
+    },
+    {
+      "name": "EndUser",
+      "required": [
+        "String id",
+        "String external_id",
+        "String status",
+        "num total_events",
+        "List<String> event_types",
+        "List<String> segments",
+        "Map<String, Object?> tags",
+        "num points_balance",
+        "num lifetime_points",
+        "Map<String, Object?> attributes",
+        "String created_at"
+      ],
+      "optionalCount": 19,
+      "source": "lib/src/models.dart",
+      "line": 8917
+    },
+    {
+      "name": "EndUserListResponse",
+      "required": [
+        "List<EndUser> users",
+        "num total",
+        "num page",
+        "num page_size",
+        "bool has_more"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 9174
+    },
+    {
+      "name": "UserActivity",
+      "required": [
+        "String event_id",
+        "String event_type",
+        "String timestamp",
+        "Map<String, Object?> data"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 9243
+    },
+    {
+      "name": "UserActivityResponse",
+      "required": [
+        "String user_id",
+        "List<UserActivity> activities",
+        "num total",
+        "num page",
+        "num page_size"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 9304
+    },
+    {
+      "name": "CreateEndUserRequest",
+      "required": [
+        "String external_id"
+      ],
+      "optionalCount": 15,
+      "source": "lib/src/models.dart",
+      "line": 9373
+    },
+    {
+      "name": "UpdateEndUserRequest",
+      "required": [],
+      "optionalCount": 15,
+      "source": "lib/src/models.dart",
+      "line": 9520
+    },
+    {
+      "name": "ListEndUsersOptions",
+      "required": [],
+      "optionalCount": 9,
+      "source": "lib/src/models.dart",
+      "line": 9658
+    },
+    {
+      "name": "LinkWalletRequest",
+      "required": [],
+      "optionalCount": 4,
+      "source": "lib/src/models.dart",
+      "line": 9750
+    },
+    {
+      "name": "MergeUsersRequest",
+      "required": [
+        "List<String> source_user_ids",
+        "String target_user_id"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 9817
+    },
+    {
+      "name": "CreateUserWalletRequest",
+      "required": [],
+      "optionalCount": 2,
+      "source": "lib/src/models.dart",
+      "line": 9868
+    },
+    {
+      "name": "RegisterWalletRequest",
+      "required": [
+        "String wallet_address"
+      ],
+      "optionalCount": 1,
+      "source": "lib/src/models.dart",
+      "line": 9913
+    },
+    {
+      "name": "UserReward",
+      "required": [
+        "String id",
+        "String reward_name",
+        "String reward_type",
+        "String status"
+      ],
+      "optionalCount": 6,
+      "source": "lib/src/models.dart",
+      "line": 9961
+    },
+    {
+      "name": "UserRewardsResponse",
+      "required": [
+        "String user_id",
+        "List<UserReward> rewards",
+        "num total",
+        "num page",
+        "num page_size",
+        "bool has_more"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 10066
+    },
+    {
+      "name": "GDPRDeletionRequest",
+      "required": [
+        "bool confirm"
+      ],
+      "optionalCount": 3,
+      "source": "lib/src/models.dart",
+      "line": 10141
+    },
+    {
+      "name": "GDPRDeletionResponse",
+      "required": [
+        "bool success",
+        "String user_id",
+        "String external_id",
+        "Map<String, num> deleted_records"
+      ],
+      "optionalCount": 2,
+      "source": "lib/src/models.dart",
+      "line": 10204
+    },
+    {
+      "name": "GDPRPreviewResponse",
+      "required": [
+        "Map<String, Object?> user",
+        "Map<String, num> would_delete"
+      ],
+      "optionalCount": 1,
+      "source": "lib/src/models.dart",
+      "line": 10282
+    },
+    {
+      "name": "WalletCreationResult",
+      "required": [
+        "bool success",
+        "String user_id",
+        "String wallet_address",
+        "String source"
+      ],
+      "optionalCount": 2,
+      "source": "lib/src/models.dart",
+      "line": 10340
+    },
+    {
+      "name": "EnsureWalletResult",
+      "required": [
+        "String user_id",
+        "EnsureWalletResultAssetWallet asset_wallet",
+        "EnsureWalletResultSmartWallet smart_wallet",
+        "String network",
+        "bool created"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 10413
+    },
+    {
+      "name": "SetProfileRequest",
+      "required": [],
+      "optionalCount": 12,
+      "source": "lib/src/models.dart",
+      "line": 10485
+    },
+    {
+      "name": "RewardDefinition",
+      "required": [
+        "String id",
+        "String name",
+        "String slug",
+        "String reward_type",
+        "num token_decimals",
+        "String token_chain",
+        "num nft_minted_pool_count",
+        "bool nft_is_soulbound",
+        "String trigger_type",
+        "num current_issued",
+        "bool is_active",
+        "bool attest_on_earn",
+        "String anchoring_mode",
+        "String created_at"
+      ],
+      "optionalCount": 13,
+      "source": "lib/src/models.dart",
+      "line": 10600
+    },
+    {
+      "name": "EarnedReward",
+      "required": [
+        "String id",
+        "String user_id",
+        "String user_external_id",
+        "String reward_name",
+        "String reward_type",
+        "String status",
+        "String earned_at"
+      ],
+      "optionalCount": 5,
+      "source": "lib/src/models.dart",
+      "line": 10839
+    },
+    {
+      "name": "RewardUserReward",
+      "required": [
+        "String id",
+        "String reward_name",
+        "String reward_type",
+        "String status",
+        "String earned_at"
+      ],
+      "optionalCount": 11,
+      "source": "lib/src/models.dart",
+      "line": 10961
+    },
+    {
+      "name": "RewardAsset",
+      "required": [
+        "String id",
+        "String definition_id",
+        "String asset_type",
+        "String file_path",
+        "String mime_type",
+        "num file_size",
+        "String created_at"
+      ],
+      "optionalCount": 1,
+      "source": "lib/src/models.dart",
+      "line": 11107
+    },
+    {
+      "name": "CreateRewardDefinitionRequest",
+      "required": [
+        "String name",
+        "String slug"
+      ],
+      "optionalCount": 25,
+      "source": "lib/src/models.dart",
+      "line": 11197
+    },
+    {
+      "name": "ManualRewardRequest",
+      "required": [
+        "String definition_id",
+        "List<String> user_ids"
+      ],
+      "optionalCount": 2,
+      "source": "lib/src/models.dart",
+      "line": 11443
+    },
+    {
+      "name": "ClaimNFTResult",
+      "required": [
+        "bool success",
+        "String reward_id",
+        "String tx_hash",
+        "String wallet_address"
+      ],
+      "optionalCount": 1,
+      "source": "lib/src/models.dart",
+      "line": 11512
+    },
+    {
+      "name": "DistributeResult",
+      "required": [
+        "bool success",
+        "String reward_id",
+        "String message"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 11579
+    },
+    {
+      "name": "RevokeResult",
+      "required": [
+        "bool success",
+        "String reward_id",
+        "String status"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 11632
+    },
+    {
+      "name": "RewardAttestationResult",
+      "required": [
+        "String attestation_id",
+        "String attestation_uid",
+        "String status",
+        "String subject_address",
+        "String reward_id",
+        "String reward_name",
+        "String earned_at",
+        "String created_at"
+      ],
+      "optionalCount": 2,
+      "source": "lib/src/models.dart",
+      "line": 11685
+    },
+    {
+      "name": "AnchorResult",
+      "required": [
+        "bool success",
+        "String reward_id",
+        "String attestation_id",
+        "String tx_hash",
+        "String status"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 11790
+    },
+    {
+      "name": "RewardVerifyResult",
+      "required": [
+        "bool is_valid",
+        "String attestation_uid",
+        "String status",
+        "String subject_address",
+        "String attester_address",
+        "String signature_type",
+        "bool on_chain",
+        "String reward_id",
+        "String reward_name"
+      ],
+      "optionalCount": 2,
+      "source": "lib/src/models.dart",
+      "line": 11857
+    },
+    {
+      "name": "ListRewardsOptions",
+      "required": [],
+      "optionalCount": 4,
+      "source": "lib/src/models.dart",
+      "line": 11968
+    },
+    {
+      "name": "Quest",
+      "required": [
+        "String id",
+        "String name",
+        "String slug",
+        "bool is_ordered",
+        "bool is_repeatable",
+        "List<String> prerequisite_quest_ids",
+        "String reward_mode",
+        "bool is_public",
+        "bool is_featured",
+        "num display_order",
+        "List<String> tags",
+        "String status",
+        "List<QuestStep> steps",
+        "num total_participants",
+        "num total_completions",
+        "String created_at",
+        "String updated_at"
+      ],
+      "optionalCount": 35,
+      "source": "lib/src/models.dart",
+      "line": 12025
+    },
+    {
+      "name": "QuestCtaLink",
+      "required": [
+        "String quest_id",
+        "String url",
+        "String resolver",
+        "String resolved_at",
+        "Map<String, Object?> meta"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 12526
+    },
+    {
+      "name": "QuestCtaResolver",
+      "required": [
+        "String key",
+        "String label",
+        "String description",
+        "bool configured"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 12599
+    },
+    {
+      "name": "QuestStep",
+      "required": [
+        "String id",
+        "String quest_id",
+        "String name",
+        "num order",
+        "String step_type",
+        "bool is_optional"
+      ],
+      "optionalCount": 9,
+      "source": "lib/src/models.dart",
+      "line": 12661
+    },
+    {
+      "name": "UserQuestProgress",
+      "required": [
+        "String id",
+        "String user_id",
+        "String quest_id",
+        "String quest_name",
+        "String status",
+        "num completion_count",
+        "num current_step_order",
+        "num steps_completed",
+        "num total_steps",
+        "num completion_percentage",
+        "List<StepProgress> step_progress",
+        "num points_earned"
+      ],
+      "optionalCount": 4,
+      "source": "lib/src/models.dart",
+      "line": 12807
+    },
+    {
+      "name": "RewardEarned",
+      "required": [
+        "String id",
+        "String reward_name",
+        "String reward_type",
+        "String status",
+        "String earned_at"
+      ],
+      "optionalCount": 2,
+      "source": "lib/src/models.dart",
+      "line": 12959
+    },
+    {
+      "name": "StepProgress",
+      "required": [
+        "String step_id",
+        "String step_name",
+        "num order",
+        "String status"
+      ],
+      "optionalCount": 3,
+      "source": "lib/src/models.dart",
+      "line": 13041
+    },
+    {
+      "name": "StepStartResult",
+      "required": [
+        "num step_index",
+        "String status",
+        "String quest_id",
+        "String quest_name",
+        "String step_name"
+      ],
+      "optionalCount": 2,
+      "source": "lib/src/models.dart",
+      "line": 13122
+    },
+    {
+      "name": "StepCompletionResult",
+      "required": [
+        "num step_index",
+        "bool step_completed",
+        "bool quest_completed",
+        "bool can_claim",
+        "num current_count",
+        "num target_count",
+        "num points_earned"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 13205
+    },
+    {
+      "name": "ClaimRewardResult",
+      "required": [
+        "String quest_id",
+        "String quest_name",
+        "String status",
+        "num points_awarded",
+        "String claimed_at"
+      ],
+      "optionalCount": 1,
+      "source": "lib/src/models.dart",
+      "line": 13290
+    },
+    {
+      "name": "QuestWithProgress",
+      "required": [
+        "Quest quest"
+      ],
+      "optionalCount": 1,
+      "source": "lib/src/models.dart",
+      "line": 13368
+    },
+    {
+      "name": "CreateQuestRequest",
+      "required": [
+        "String name",
+        "List<CreateQuestStepRequest> steps"
+      ],
+      "optionalCount": 26,
+      "source": "lib/src/models.dart",
+      "line": 13416
+    },
+    {
+      "name": "CreateQuestStepRequest",
+      "required": [
+        "String name"
+      ],
+      "optionalCount": 12,
+      "source": "lib/src/models.dart",
+      "line": 13676
+    },
+    {
+      "name": "ListQuestsOptions",
+      "required": [],
+      "optionalCount": 6,
+      "source": "lib/src/models.dart",
+      "line": 13809
+    },
+    {
+      "name": "Schema",
+      "required": [
+        "String id",
+        "String name",
+        "String version",
+        "String status",
+        "bool is_default",
+        "num usage_count"
+      ],
+      "optionalCount": 4,
+      "source": "lib/src/models.dart",
+      "line": 13882
+    },
+    {
+      "name": "SchemaDetail",
+      "required": [
+        "super.id",
+        "super.name",
+        "super.version",
+        "super.status",
+        "super.is_default",
+        "super.usage_count",
+        "Map<String, Object?> schema_definition",
+        "String yaml_content"
+      ],
+      "optionalCount": 4,
+      "source": "lib/src/models.dart",
+      "line": 13983
+    },
+    {
+      "name": "SchemaField",
+      "required": [
+        "String name",
+        "String type"
+      ],
+      "optionalCount": 7,
+      "source": "lib/src/models.dart",
+      "line": 14045
+    },
+    {
+      "name": "ValidationResult",
+      "required": [
+        "bool valid",
+        "String schema_name",
+        "List<SchemaValidationError> errors"
+      ],
+      "optionalCount": 1,
+      "source": "lib/src/models.dart",
+      "line": 14138
+    },
+    {
+      "name": "SchemaValidationError",
+      "required": [
+        "String field",
+        "String message"
+      ],
+      "optionalCount": 1,
+      "source": "lib/src/models.dart",
+      "line": 14205
+    },
+    {
+      "name": "SchemaListResponse",
+      "required": [
+        "List<Schema> schemas",
+        "num total"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 14255
+    },
+    {
+      "name": "CreateSchemaRequest",
+      "required": [
+        "String yaml_content"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 14303
+    },
+    {
+      "name": "ValidateDataRequest",
+      "required": [
+        "String schema_name",
+        "Map<String, Object?> data"
+      ],
+      "optionalCount": 1,
+      "source": "lib/src/models.dart",
+      "line": 14344
+    },
+    {
+      "name": "ListSchemasOptions",
+      "required": [],
+      "optionalCount": 4,
+      "source": "lib/src/models.dart",
+      "line": 14400
+    },
+    {
+      "name": "DataViewColumn",
+      "required": [
+        "String name",
+        "String type"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 14455
+    },
+    {
+      "name": "DataViewInfo",
+      "required": [
+        "String id",
+        "String name",
+        "String view_name",
+        "String description",
+        "bool is_builtin",
+        "List<DataViewColumn> columns"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 14499
+    },
+    {
+      "name": "DataViewListResponse",
+      "required": [
+        "List<DataViewSummary> own_views",
+        "List<DataViewSummary> public_views",
+        "List<DataViewSummary> builtin_views"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 14576
+    },
+    {
+      "name": "DataViewSummary",
+      "required": [
+        "String name",
+        "String description"
+      ],
+      "optionalCount": 3,
+      "source": "lib/src/models.dart",
+      "line": 14642
+    },
+    {
+      "name": "DataViewDetail",
+      "required": [
+        "String id",
+        "String name",
+        "String display_name",
+        "String description",
+        "String view_type",
+        "Object? computation",
+        "List<String> source_categories",
+        "bool is_public",
+        "String created_at",
+        "String updated_at"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 14715
+    },
+    {
+      "name": "DataViewComputation",
+      "required": [
+        "String type"
+      ],
+      "optionalCount": 13,
+      "source": "lib/src/models.dart",
+      "line": 14820
+    },
+    {
+      "name": "TierDefinition",
+      "required": [
+        "String name",
+        "num min",
+        "num max"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 14962
+    },
+    {
+      "name": "DataViewExecuteResult",
+      "required": [
+        "String view_name",
+        "String display_name",
+        "String identifier",
+        "String identifier_type",
+        "Map<String, Object?> data",
+        "String computed_at",
+        "num total_events"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 15012
+    },
+    {
+      "name": "DataViewPreviewRequest",
+      "required": [
+        "String wallet_address",
+        "Object? computation"
+      ],
+      "optionalCount": 2,
+      "source": "lib/src/models.dart",
+      "line": 15096
+    },
+    {
+      "name": "DataViewPreviewResult",
+      "required": [
+        "bool preview",
+        "String wallet_address",
+        "String computation_type",
+        "Map<String, Object?> result",
+        "num events_processed",
+        "num time_window_days"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 15159
+    },
+    {
+      "name": "CreateDataViewRequest",
+      "required": [
+        "String name",
+        "String display_name",
+        "String description",
+        "Object? computation"
+      ],
+      "optionalCount": 3,
+      "source": "lib/src/models.dart",
+      "line": 15237
+    },
+    {
+      "name": "UpdateDataViewRequest",
+      "required": [],
+      "optionalCount": 5,
+      "source": "lib/src/models.dart",
+      "line": 15323
+    },
+    {
+      "name": "FanProfileView",
+      "required": [
+        "String wallet_address",
+        "num fan_score",
+        "num total_events",
+        "Map<String, num> event_breakdown",
+        "String first_seen",
+        "String last_seen",
+        "String loyalty_tier",
+        "String computed_at"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 15396
+    },
+    {
+      "name": "ActivitySummaryView",
+      "required": [
+        "String wallet_address",
+        "num total_events",
+        "Map<String, num> event_count_by_type",
+        "String last_activity",
+        "num active_days",
+        "num period_days",
+        "String computed_at"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 15490
+    },
+    {
+      "name": "EventMetadata",
+      "required": [
+        "List<EventMetadataEventTypesItem> event_types",
+        "num total_events",
+        "List<String> categories"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 15578
+    },
+    {
+      "name": "ViewTemplate",
+      "required": [
+        "String id",
+        "String name",
+        "String description",
+        "DataViewComputation computation"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 15641
+    },
+    {
+      "name": "LeaderboardUserProfile",
+      "required": [
+        "String external_id",
+        "String? display_name",
+        "String? first_name",
+        "String? last_name",
+        "String? email",
+        "String? avatar_url",
+        "String? country",
+        "String? city",
+        "Map<String, Object?> attributes"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 15702
+    },
+    {
+      "name": "CohortLeaderboardEntry",
+      "required": [
+        "num rank",
+        "String user_id",
+        "num score",
+        "num percentile_global",
+        "num? percentile_filtered"
+      ],
+      "optionalCount": 2,
+      "source": "lib/src/models.dart",
+      "line": 15797
+    },
+    {
+      "name": "CohortGroupStats",
+      "required": [
+        "num? filtered_avg_percentile",
+        "num? filtered_top_n_avg_percentile",
+        "num global_count",
+        "num global_avg_percentile"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 15880
+    },
+    {
+      "name": "CohortLeaderboardResponse",
+      "required": [
+        "String cohort_id",
+        "String cohort_name",
+        "Map<String, Object?> filter",
+        "num total_users",
+        "CohortGroupStats group_stats",
+        "List<CohortLeaderboardEntry> leaderboard",
+        "CohortLeaderboardEntry? current_user",
+        "bool current_user_in_leaderboard"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 15947
+    },
+    {
+      "name": "CohortDefinition",
+      "required": [
+        "String id",
+        "String tenant_id",
+        "String name",
+        "String slug",
+        "String scoring_type",
+        "String status",
+        "String created_at",
+        "String updated_at"
+      ],
+      "optionalCount": 5,
+      "source": "lib/src/models.dart",
+      "line": 16044
+    },
+    {
+      "name": "UserCohortBreakdownEntry",
+      "required": [
+        "String cohort_id",
+        "String cohort_slug",
+        "String cohort_name",
+        "num user_percentile",
+        "num? filtered_group_avg_percentile",
+        "num global_group_avg_percentile"
+      ],
+      "optionalCount": 2,
+      "source": "lib/src/models.dart",
+      "line": 16164
+    },
+    {
+      "name": "UserBreakdownResponse",
+      "required": [
+        "String user_id",
+        "Map<String, Object?> filter",
+        "List<UserCohortBreakdownEntry> cohorts"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 16263
+    },
+    {
+      "name": "CohortLeaderboardOptions",
+      "required": [],
+      "optionalCount": 6,
+      "source": "lib/src/models.dart",
+      "line": 16326
+    },
+    {
+      "name": "ListCohortsOptions",
+      "required": [],
+      "optionalCount": 3,
+      "source": "lib/src/models.dart",
+      "line": 16399
+    },
+    {
+      "name": "FanpassLeaderboardUserProfile",
+      "required": [
+        "String external_id",
+        "String? display_name",
+        "String? first_name",
+        "String? last_name",
+        "String? email",
+        "String? avatar_url",
+        "String? country",
+        "String? city",
+        "Map<String, Object?> attributes"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 16448
+    },
+    {
+      "name": "FanpassLeaderboardEntry",
+      "required": [
+        "num rank",
+        "String user_id",
+        "num fan_score",
+        "num normalized_score",
+        "num raw_score",
+        "num percentile"
+      ],
+      "optionalCount": 2,
+      "source": "lib/src/models.dart",
+      "line": 16543
+    },
+    {
+      "name": "FanpassGroupStats",
+      "required": [
+        "num avg_fan_score",
+        "num top_n_avg_fan_score",
+        "num global_count",
+        "num global_avg_fan_score"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 16633
+    },
+    {
+      "name": "FanpassCohortStatus",
+      "required": [
+        "String cohort_slug",
+        "String cohort_name",
+        "num users_scored",
+        "String status"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 16697
+    },
+    {
+      "name": "FanpassLeaderboardResponse",
+      "required": [
+        "String? aggregation_rule_id",
+        "String? aggregation_rule_name",
+        "Map<String, Object?> filter",
+        "num total_users",
+        "FanpassGroupStats group_stats",
+        "List<FanpassLeaderboardEntry> leaderboard",
+        "List<FanpassCohortStatus> cohorts",
+        "FanpassLeaderboardEntry? current_user",
+        "bool current_user_in_leaderboard"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 16762
+    },
+    {
+      "name": "FanpassUserComparisonResponse",
+      "required": [
+        "String user_id",
+        "Map<String, Object?> filter",
+        "List<UserCohortBreakdownEntry> cohorts"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 16875
+    },
+    {
+      "name": "FanpassLeaderboardOptions",
+      "required": [],
+      "optionalCount": 7,
+      "source": "lib/src/models.dart",
+      "line": 16933
+    },
+    {
+      "name": "PushSubscriptionJSON",
+      "required": [
+        "String endpoint",
+        "PushSubscriptionJSONKeys keys"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 17015
+    },
+    {
+      "name": "NotificationEvent",
+      "required": [
+        "String id",
+        "NotificationEventType event",
+        "Map<String, Object?> data",
+        "String tenant_id",
+        "String user_id",
+        "String timestamp"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 17068
+    },
+    {
+      "name": "CredentialType",
+      "required": [
+        "String id",
+        "String name",
+        "String slug",
+        "num display_order",
+        "Map<String, Object?> schema_definition",
+        "bool is_revocable",
+        "num max_active_per_user",
+        "bool auto_renew",
+        "String default_visibility",
+        "bool requires_opt_in",
+        "String status",
+        "num total_issued",
+        "num total_active",
+        "String created_at"
+      ],
+      "optionalCount": 5,
+      "source": "lib/src/models.dart",
+      "line": 17154
+    },
+    {
+      "name": "IssuedCredential",
+      "required": [
+        "String id",
+        "String credential_type_id",
+        "String credential_type_name",
+        "String credential_type_slug",
+        "String user_id",
+        "String verification_code",
+        "Map<String, Object?> credential_data",
+        "String visibility",
+        "String status",
+        "bool is_valid",
+        "String issued_at",
+        "num verification_count"
+      ],
+      "optionalCount": 5,
+      "source": "lib/src/models.dart",
+      "line": 17324
+    },
+    {
+      "name": "CredentialVerifyResult",
+      "required": [
+        "bool valid",
+        "String status",
+        "String credential_type",
+        "String credential_type_slug",
+        "Map<String, Object?> credential_data",
+        "String issued_at",
+        "String issuer",
+        "num verification_count"
+      ],
+      "optionalCount": 4,
+      "source": "lib/src/models.dart",
+      "line": 17485
+    },
+    {
+      "name": "UserCredentialsSummary",
+      "required": [
+        "bool credentials_enabled",
+        "num total_credentials",
+        "num active_credentials",
+        "List<IssuedCredential> credentials"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 17605
+    },
+    {
+      "name": "CreateCredentialTypeRequest",
+      "required": [
+        "String name"
+      ],
+      "optionalCount": 15,
+      "source": "lib/src/models.dart",
+      "line": 17674
+    },
+    {
+      "name": "IssueCredentialRequest",
+      "required": [
+        "String credential_type_id",
+        "String user_id"
+      ],
+      "optionalCount": 4,
+      "source": "lib/src/models.dart",
+      "line": 17832
+    },
+    {
+      "name": "ListIssuedCredentialsOptions",
+      "required": [],
+      "optionalCount": 5,
+      "source": "lib/src/models.dart",
+      "line": 17911
+    },
+    {
+      "name": "MintNFTRequest",
+      "required": [
+        "String recipientAddress",
+        "String name"
+      ],
+      "optionalCount": 10,
+      "source": "lib/src/models.dart",
+      "line": 17978
+    },
+    {
+      "name": "NFTMint",
+      "required": [
+        "String id",
+        "String tenant_id",
+        "String recipient_address",
+        "String? recipient_user_id",
+        "num? token_id",
+        "String? tx_hash",
+        "String contract_address",
+        "String network",
+        "String? content_hash",
+        "num cert_type",
+        "num? validity_days",
+        "Map<String, Object?>? metadata",
+        "String? metadata_uri",
+        "String image_url",
+        "String? image_storage_path",
+        "String name",
+        "String? description",
+        "String status",
+        "String? error_message",
+        "String? gas_used",
+        "String? created_at",
+        "String? updated_at"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 18127
+    },
+    {
+      "name": "ListMintsOptions",
+      "required": [],
+      "optionalCount": 5,
+      "source": "lib/src/models.dart",
+      "line": 18316
+    },
+    {
+      "name": "ListMintsResponse",
+      "required": [
+        "List<NFTMint> mints",
+        "num total"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 18383
+    },
+    {
+      "name": "OTTGenerateRequest",
+      "required": [],
+      "optionalCount": 2,
+      "source": "lib/src/models.dart",
+      "line": 18431
+    },
+    {
+      "name": "OTTGenerateResponse",
+      "required": [
+        "String ott",
+        "num expires_in"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 18480
+    },
+    {
+      "name": "OTTRedeemResponse",
+      "required": [
+        "String user_id",
+        "String tenant_id",
+        "String? tenant_name",
+        "Map<String, Object?> session_data",
+        "String issued_at",
+        "String expires_at"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 18525
+    },
+    {
+      "name": "OTTConfigUpdate",
+      "required": [],
+      "optionalCount": 5,
+      "source": "lib/src/models.dart",
+      "line": 18602
+    },
+    {
+      "name": "OTTConfigResponse",
+      "required": [
+        "String partner_key_id",
+        "String partner_name",
+        "bool ott_enabled",
+        "num ott_ttl_seconds",
+        "String ott_redemption_mode",
+        "num ott_jwt_ttl_seconds"
+      ],
+      "optionalCount": 1,
+      "source": "lib/src/models.dart",
+      "line": 18681
+    },
+    {
+      "name": "IngestEventRequest",
+      "required": [
+        "String userId",
+        "String eventType"
+      ],
+      "optionalCount": 5,
+      "source": "lib/src/models.dart",
+      "line": 18778
+    },
+    {
+      "name": "IngestEventResponse",
+      "required": [
+        "String eventId",
+        "String certificateId",
+        "String status"
+      ],
+      "optionalCount": 2,
+      "source": "lib/src/models.dart",
+      "line": 18870
+    },
+    {
+      "name": "BatchIngestRequest",
+      "required": [
+        "List<IngestEventRequest> events"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 18940
+    },
+    {
+      "name": "BatchIngestResponse",
+      "required": [
+        "num totalEvents",
+        "num queued",
+        "num failed",
+        "List<IngestEventResponse> results"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 18983
+    },
+    {
+      "name": "IngestionClientOptions",
+      "required": [
+        "String apiKey"
+      ],
+      "optionalCount": 2,
+      "source": "lib/src/models.dart",
+      "line": 19047
+    },
+    {
+      "name": "EndUserIngestionClientOptions",
+      "required": [
+        "String userToken",
+        "String tenantId"
+      ],
+      "optionalCount": 2,
+      "source": "lib/src/models.dart",
+      "line": 19098
+    },
+    {
+      "name": "ComprehensiveWalletInfoBalances",
+      "required": [
+        "String address",
+        "String network",
+        "List<TokenBalance> tokens",
+        "String fetched_at"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 19166
+    },
+    {
+      "name": "ComprehensiveWalletInfoNfts",
+      "required": [
+        "num total",
+        "List<NFT> items"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 19229
+    },
+    {
+      "name": "ComprehensiveWalletInfoActivity",
+      "required": [
+        "List<SwapResult> recent_swaps",
+        "num total_swaps"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 19278
+    },
+    {
+      "name": "UserWalletSummaryWalletsItem",
+      "required": [
+        "String wallet_id",
+        "String address",
+        "String wallet_type",
+        "String network",
+        "bool supports_export",
+        "String created_at"
+      ],
+      "optionalCount": 4,
+      "source": "lib/src/models.dart",
+      "line": 19328
+    },
+    {
+      "name": "UserWithWalletsWalletsItem",
+      "required": [
+        "String wallet_id",
+        "String address",
+        "String wallet_type",
+        "String network",
+        "String status"
+      ],
+      "optionalCount": 1,
+      "source": "lib/src/models.dart",
+      "line": 19434
+    },
+    {
+      "name": "EnsureWalletResultAssetWallet",
+      "required": [
+        "String wallet_id",
+        "String address",
+        "String wallet_type",
+        "String network"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 19506
+    },
+    {
+      "name": "EnsureWalletResultSmartWallet",
+      "required": [
+        "String wallet_id",
+        "String address",
+        "String wallet_type",
+        "String network"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 19566
+    },
+    {
+      "name": "EventMetadataEventTypesItem",
+      "required": [
+        "String event_type",
+        "num count",
+        "String last_seen"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 19626
+    },
+    {
+      "name": "PushSubscriptionJSONKeys",
+      "required": [
+        "String p256dh",
+        "String auth"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 19680
+    },
+    {
+      "name": "UserWalletSummaryWalletsItemBalances",
+      "required": [
+        "String address",
+        "String network",
+        "List<TokenBalance> tokens",
+        "String fetched_at"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 19724
+    }
+  ],
+  "typeAliases": [
+    "typedef AttestationMode = String;",
+    "typedef EventStatus = String;",
+    "typedef ChannelState = String;",
+    "typedef QuestCtaType = String;",
+    "typedef NotificationEventType = String;",
+    "typedef OTTRequestResponse = OTTGenerateResponse;"
+  ]
+}

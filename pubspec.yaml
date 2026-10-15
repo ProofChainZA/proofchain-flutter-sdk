@@ -1,0 +1,14 @@
+name: proofchain_sdk
+description: Flutter-compatible Dart client mirroring the ProofChain JavaScript SDK.
+version: 0.1.1
+homepage: https://proofchain.co.za
+repository: https://github.com/ProofChainZA/proofchain-flutter-sdk
+issue_tracker: https://github.com/ProofChainZA/proofchain-flutter-sdk/issues
+documentation: https://pub.dev/documentation/proofchain_sdk/latest/
+
+environment:
+  sdk: '>=3.4.0 <4.0.0'
+
+dev_dependencies:
+  test: ^1.25.0
+  lints: '>=4.0.0 <7.0.0'

@@ -1,0 +1,12 @@
+# .pubignore replaces .gitignore for `dart pub publish`; keep its entries here.
+.dart_tool/
+.packages
+build/
+coverage/
+pubspec.lock
+doc/api/
+
+# Documentation generator (own pubspec, dev-only deps) and the rendered guide.
+# The guide stays in the repository and is linked from README.md.
+tool/
+docs/

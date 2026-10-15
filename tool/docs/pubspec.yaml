@@ -1,0 +1,12 @@
+name: proofchain_sdk_docs_tools
+publish_to: none
+description: Source-derived reference and PDF tooling for the SDK developer guide.
+environment:
+  sdk: '>=3.13.0 <4.0.0'
+dependencies:
+  analyzer: ^14.5.0
+  html: ^0.15.6
+  markdown: ^7.3.0
+dev_dependencies:
+  test: ^1.25.0
+  lints: ^6.1.0
