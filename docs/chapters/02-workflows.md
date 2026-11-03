@@ -642,6 +642,75 @@ Credential opt-in/opt-out are server mutations affecting a user's enrollment,
 not mobile notification permission prompts. Avoid invoking them automatically
 while loading the user's credentials.
 
+### Voucher (gift card) rewards
+
+A reward with `reward_type == 'voucher'` is a gift card fulfilled off-chain.
+Once its status is `awaiting_claim` or `claimed`, show a "Claim" action that
+calls `claimVoucher` (no wallet address) and opens the returned link directly.
+Each call returns a fresh `redemption_url`; treat it as a secret and never
+persist, log, or cache it. A 409 means the voucher is not issued yet or was
+revoked/failed.
+
+```dart
+import 'package:proofchain_sdk/proofchain.dart';
+
+Future<String?> voucherRedemptionLink(
+  ProofChain client,
+  String earnedRewardId,
+) async {
+  final result = await client.rewards.claimVoucher(earnedRewardId);
+  return result.redemption_url;
+}
+```
+
+Email/SMS delivery: when the definition's `voucher_delivery_methods` includes
+`email` or `sms` (omitted means `['link']`), the fan chooses at claim time and
+the gift card is bought then (funds are committed at claim, not when earned).
+Pass a `VoucherDelivery`; the provider emails or texts the voucher and
+`redemption_url` is null. Phone numbers must be E.164. Contact details go
+straight to the provider and are never stored, logged or audited by
+Proofchain; do not persist them in your app either. Without `delivery` the
+claim is a link claim. After a `failed` delivery, claim again with the same
+method to re-send to a corrected address.
+
+```dart
+import 'package:proofchain_sdk/proofchain.dart';
+
+Future<String?> emailVoucher(ProofChain client, String earnedRewardId) async {
+  final result = await client.rewards.claimVoucher(earnedRewardId,
+      delivery: const VoucherDelivery(
+          method: voucherDeliveryEmail, email: 'fan@example.com', name: 'Sam'));
+  return result.delivery_status;
+}
+```
+
+The provider does not report redemption; only delivery is tracked.
+`EarnedReward` exposes `voucher_delivery_method`, `voucher_delivery_status`
+(`pending`, `delivered`, `failed`, `canceled`, `flagged`, `blocked`),
+`voucher_delivery_failure` (e.g. `invalid_email`) and
+`voucher_status_updated_at`. Backends can subscribe to the tenant webhook
+events `reward.voucher.claimed` and `reward.voucher.delivery_updated` (no
+contact details included).
+```
+
+Backend/admin code configures voucher definitions with `reward_type: 'voucher'`,
+`value`, `value_currency`, and `voucher_product_ids` and/or
+`voucher_campaign_id`; `client.rewards.listVoucherProducts(country: 'GB',
+currency: 'GBP')` lists eligible catalog products (tenant credentials).
+`EarnedReward.voucher_order_id` exposes the provider order id for support.
+
+Choose your own: several `voucher_product_ids` (or a campaign) let the fan pick
+a product on the redemption page; products whose range does not fit the value
+are hidden. Include `voucherAllFeeFree` (`'ALL_FEE_FREE'`) to offer every
+fee-free product; the server expands it to explicit ids when the definition is
+saved. `voucher_language` (ISO-639-1, e.g. `'fr'`) translates the redemption
+page and `voucher_message` (max 1000 chars) is shown on it.
+`listVoucherProducts` also filters by `category` (e.g. `merchant_card`,
+`charity`, `paypal`, `visa_card`, where the account offers them),
+`subcategory` (e.g. `food_and_drink`) and `feeFree`. Products expose
+`description`, `usage_instructions`, `fee_free` and `disclosure`; `disclosure`
+is provider HTML, so sanitize it before rendering.
+
 ## 10.4 Backend/admin: edit definitions, award, issue, and mint
 
 Quest creation/publishing/pausing, definition editing, manual awards,

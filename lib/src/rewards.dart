@@ -3,6 +3,16 @@ import 'json.dart';
 import 'models.dart';
 import 'upload.dart';
 
+/// Sentinel for `voucher_product_ids`: every fee-free product. The server
+/// expands it to explicit fitting product ids when a definition is saved.
+const voucherAllFeeFree = 'ALL_FEE_FREE';
+
+/// Voucher delivery methods (`VoucherDelivery.method`,
+/// `voucher_delivery_methods`).
+const voucherDeliveryLink = 'link';
+const voucherDeliveryEmail = 'email';
+const voucherDeliverySms = 'sms';
+
 class RewardsClient {
   final HttpClient http;
   RewardsClient(this.http);
@@ -89,6 +99,49 @@ class RewardsClient {
   Future<ClaimNFTResult> claimReward(
           String earnedRewardId, String walletAddress) =>
       claimNFT(earnedRewardId, walletAddress);
+
+  /// Claims an issued `voucher` reward.
+  ///
+  /// Without [delivery] (or with method `link`) returns a fresh redemption
+  /// link. The link is a secret: open it directly and never persist, log or
+  /// cache it. With method `email`/`sms` the provider sends the voucher to
+  /// the fan, `redemption_url` is null and the gift card is bought now.
+  /// Contact details go straight to the provider; Proofchain never stores
+  /// them. Track progress via `delivery_status` (redemption is not reported).
+  Future<ClaimVoucherResult> claimVoucher(String earnedRewardId,
+          {VoucherDelivery? delivery}) async =>
+      decodeModel(
+          await http.post('/rewards/earned/$earnedRewardId/claim',
+              delivery == null ? const {} : {'delivery': delivery.toJson()}),
+          ClaimVoucherResult.fromJson);
+
+  /// Lists voucher catalog products. Requires tenant (API key) credentials.
+  ///
+  /// Filters: one ISO-3166 alpha-2 [country], one ISO-4217 [currency],
+  /// [category] (e.g. `merchant_card`, `charity`, `paypal`, `visa_card`) and
+  /// [subcategory] (e.g. `food_and_drink`) lists sent comma-separated, and
+  /// [feeFree] (`false` is sent; omit for all products).
+  Future<List<VoucherProduct>> listVoucherProducts(
+      {String? country,
+      String? currency,
+      List<String>? category,
+      List<String>? subcategory,
+      bool? feeFree}) async {
+    final query = queryString({
+      if (jsTruthy(country)) 'country': country,
+      if (jsTruthy(currency)) 'currency': currency,
+      if (category != null && category.isNotEmpty)
+        'category': category.join(','),
+      if (subcategory != null && subcategory.isNotEmpty)
+        'subcategory': subcategory.join(','),
+      if (feeFree != null) 'fee_free': feeFree,
+    });
+    return decodeList(
+        await http
+            .get('/rewards/voucher-products${query.isEmpty ? '' : '?$query'}'),
+        VoucherProduct.fromJson);
+  }
+
   Future<List<EarnedReward>> award(ManualRewardRequest request) async =>
       decodeList(
           await http.post('/rewards/award', request), EarnedReward.fromJson);

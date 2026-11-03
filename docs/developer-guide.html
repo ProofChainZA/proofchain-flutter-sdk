@@ -144,7 +144,7 @@ tr { break-inside: avoid; }
   table { font-size: 12px; }
 }
 </style></head><body>
-<header class="cover"><div><div class="brand">ProofChain</div><h1>Flutter SDK<br>Developer guide</h1><p class="subtitle">Initialize securely. Integrate real workflows.<br>Use the complete Dart API.</p><p class="summary">A practical implementation manual for Android/iOS Flutter applications and trusted native Dart processes. Includes runnable Dart examples, authenticated Flutter integration, native event streams, ingestion and a source-derived API reference.</p></div><div class="meta"><p><strong>Package</strong> <code>proofchain_sdk</code> · <strong>Version</strong> 0.1.1 · <strong>Edition</strong> 2026-10-15</p><p><strong>Reference</strong> Current local JavaScript SDK and Dart implementation</p><p><strong>Scope</strong> 24 resource namespaces · 272 matching public operations</p><p class="status">Native Dart. Android/iOS build and device validation remain outstanding. Registry releases are versioned separately from this source guide.</p></div></header>
+<header class="cover"><div><div class="brand">ProofChain</div><h1>Flutter SDK<br>Developer guide</h1><p class="subtitle">Initialize securely. Integrate real workflows.<br>Use the complete Dart API.</p><p class="summary">A practical implementation manual for Android/iOS Flutter applications and trusted native Dart processes. Includes runnable Dart examples, authenticated Flutter integration, native event streams, ingestion and a source-derived API reference.</p></div><div class="meta"><p><strong>Package</strong> <code>proofchain_sdk</code> · <strong>Version</strong> 0.1.1 · <strong>Edition</strong> 2026-11-03</p><p><strong>Reference</strong> Current local JavaScript SDK and Dart implementation</p><p><strong>Scope</strong> 24 resource namespaces · 274 matching public operations</p><p class="status">Native Dart. Android/iOS build and device validation remain outstanding. Registry releases are versioned separately from this source guide.</p></div></header>
 <nav class="toc" aria-label="Contents"><h1>Contents</h1><small>Section titles and resource namespaces are clickable in the PDF. Code examples use fixture identifiers and require your own authorized environment; no production credentials are included.</small><ol><li><a href="#1-scope-status-and-platform-boundaries">1. Scope, status, and platform boundaries</a></li>
 <li><a href="#2-install-the-package-and-configure-networking">2. Install the package and configure networking</a></li>
 <li><a href="#3-choose-routing-credentials-and-client-lifetime">3. Choose routing, credentials, and client lifetime</a></li>
@@ -1449,17 +1449,82 @@ separate from certificate verification and wallet attestation verification.
 Credential opt-in/opt-out are server mutations affecting a user's enrollment,
 not mobile notification permission prompts. Avoid invoking them automatically
 while loading the user's credentials.</p>
-<h2 id="10-4-backend-admin-edit-definitions-award-issue-and-mint">10.4 Backend/admin: edit definitions, award, issue, and mint</h2>
-<p>Quest creation/publishing/pausing, definition editing, manual awards,
+<h3>Voucher (gift card) rewards</h3>
+<p>A reward with <code>reward_type == 'voucher'</code> is a gift card fulfilled off-chain.
+Once its status is <code>awaiting_claim</code> or <code>claimed</code>, show a "Claim" action that
+calls <code>claimVoucher</code> (no wallet address) and opens the returned link directly.
+Each call returns a fresh <code>redemption_url</code>; treat it as a secret and never
+persist, log, or cache it. A 409 means the voucher is not issued yet or was
+revoked/failed.</p>
+<pre class="short"><code class="language-dart">import 'package:proofchain_sdk/proofchain.dart';
+
+Future&lt;String?&gt; voucherRedemptionLink(
+  ProofChain client,
+  String earnedRewardId,
+) async {
+  final result = await client.rewards.claimVoucher(earnedRewardId);
+  return result.redemption_url;
+}
+</code></pre>
+<p>Email/SMS delivery: when the definition's <code>voucher_delivery_methods</code> includes
+<code>email</code> or <code>sms</code> (omitted means <code>['link']</code>), the fan chooses at claim time and
+the gift card is bought then (funds are committed at claim, not when earned).
+Pass a <code>VoucherDelivery</code>; the provider emails or texts the voucher and
+<code>redemption_url</code> is null. Phone numbers must be E.164. Contact details go
+straight to the provider and are never stored, logged or audited by
+Proofchain; do not persist them in your app either. Without <code>delivery</code> the
+claim is a link claim. After a <code>failed</code> delivery, claim again with the same
+method to re-send to a corrected address.</p>
+<pre class="short"><code class="language-dart">import 'package:proofchain_sdk/proofchain.dart';
+
+Future&lt;String?&gt; emailVoucher(ProofChain client, String earnedRewardId) async {
+  final result = await client.rewards.claimVoucher(earnedRewardId,
+      delivery: const VoucherDelivery(
+          method: voucherDeliveryEmail, email: 'fan@example.com', name: 'Sam'));
+  return result.delivery_status;
+}
+</code></pre>
+<p>The provider does not report redemption; only delivery is tracked.
+<code>EarnedReward</code> exposes <code>voucher_delivery_method</code>, <code>voucher_delivery_status</code>
+(<code>pending</code>, <code>delivered</code>, <code>failed</code>, <code>canceled</code>, <code>flagged</code>, <code>blocked</code>),
+<code>voucher_delivery_failure</code> (e.g. <code>invalid_email</code>) and
+<code>voucher_status_updated_at</code>. Backends can subscribe to the tenant webhook
+events <code>reward.voucher.claimed</code> and <code>reward.voucher.delivery_updated</code> (no
+contact details included).</p>
+<pre><code>
+Backend/admin code configures voucher definitions with `reward_type: 'voucher'`,
+`value`, `value_currency`, and `voucher_product_ids` and/or
+`voucher_campaign_id`; `client.rewards.listVoucherProducts(country: 'GB',
+currency: 'GBP')` lists eligible catalog products (tenant credentials).
+`EarnedReward.voucher_order_id` exposes the provider order id for support.
+
+Choose your own: several `voucher_product_ids` (or a campaign) let the fan pick
+a product on the redemption page; products whose range does not fit the value
+are hidden. Include `voucherAllFeeFree` (`'ALL_FEE_FREE'`) to offer every
+fee-free product; the server expands it to explicit ids when the definition is
+saved. `voucher_language` (ISO-639-1, e.g. `'fr'`) translates the redemption
+page and `voucher_message` (max 1000 chars) is shown on it.
+`listVoucherProducts` also filters by `category` (e.g. `merchant_card`,
+`charity`, `paypal`, `visa_card`, where the account offers them),
+`subcategory` (e.g. `food_and_drink`) and `feeFree`. Products expose
+`description`, `usage_instructions`, `fee_free` and `disclosure`; `disclosure`
+is provider HTML, so sanitize it before rendering.
+
+## 10.4 Backend/admin: edit definitions, award, issue, and mint
+
+Quest creation/publishing/pausing, definition editing, manual awards,
 distribution, revocation, credential issuance/type administration, and direct
 NFT minting belong to trusted authorized administration. JWT construction does
-not make those actions safe for a mobile client.</p>
-<p>Step helpers are read-modify-write operations over the <strong>full</strong> steps array.
-<code>addStep</code> appends using maximum existing order plus one when order is omitted;
-<code>updateStep</code> and <code>deleteStep</code> rewrite existing editable fields;
-<code>reorderSteps</code> rewrites the array using only the IDs supplied. Supply every step
-ID you intend to retain and serialize administration to avoid lost updates.</p>
-<pre><code class="language-dart">import 'package:proofchain_sdk/proofchain.dart';
+not make those actions safe for a mobile client.
+
+Step helpers are read-modify-write operations over the **full** steps array.
+`addStep` appends using maximum existing order plus one when order is omitted;
+`updateStep` and `deleteStep` rewrite existing editable fields;
+`reorderSteps` rewrites the array using only the IDs supplied. Supply every step
+ID you intend to retain and serialize administration to avoid lost updates.
+
+```dart
+import 'package:proofchain_sdk/proofchain.dart';
 
 Future&lt;QuestStep&gt; addLearningStep(ProofChain admin, String questId) {
   return admin.quests.addStep(questId, const CreateQuestStepRequest(
@@ -2672,6 +2737,12 @@ production-tenant access, background push integration or package publication.</p
 <h3><code>client.rewards.claimReward</code></h3>
 <pre class="short"><code class="language-text">Future&lt;ClaimNFTResult&gt; claimReward(String earnedRewardId, String walletAddress)
 </code></pre>
+<h3><code>client.rewards.claimVoucher</code></h3>
+<pre class="short"><code class="language-text">Future&lt;ClaimVoucherResult&gt; claimVoucher(String earnedRewardId, {VoucherDelivery? delivery})
+</code></pre>
+<h3><code>client.rewards.listVoucherProducts</code></h3>
+<pre class="short"><code class="language-text">Future&lt;List&lt;VoucherProduct&gt;&gt; listVoucherProducts({String? country, String? currency, List&lt;String&gt;? category, List&lt;String&gt;? subcategory, bool? feeFree})
+</code></pre>
 <h3><code>client.rewards.award</code></h3>
 <pre class="short"><code class="language-text">Future&lt;List&lt;EarnedReward&gt;&gt; award(ManualRewardRequest request)
 </code></pre>
@@ -3202,13 +3273,17 @@ typedef Unsubscribe = void Function();
 <tr><td><code>WalletCreationResult</code></td><td><code>bool success</code>, <code>String user_id</code>, <code>String wallet_address</code>, <code>String source</code></td><td>2</td></tr>
 <tr><td><code>EnsureWalletResult</code></td><td><code>String user_id</code>, <code>EnsureWalletResultAssetWallet asset_wallet</code>, <code>EnsureWalletResultSmartWallet smart_wallet</code>, <code>String network</code>, <code>bool created</code></td><td>0</td></tr>
 <tr><td><code>SetProfileRequest</code></td><td>None</td><td>12</td></tr>
-<tr><td><code>RewardDefinition</code></td><td><code>String id</code>, <code>String name</code>, <code>String slug</code>, <code>String reward_type</code>, <code>num token_decimals</code>, <code>String token_chain</code>, <code>num nft_minted_pool_count</code>, <code>bool nft_is_soulbound</code>, <code>String trigger_type</code>, <code>num current_issued</code>, <code>bool is_active</code>, <code>bool attest_on_earn</code>, <code>String anchoring_mode</code>, <code>String created_at</code></td><td>13</td></tr>
-<tr><td><code>EarnedReward</code></td><td><code>String id</code>, <code>String user_id</code>, <code>String user_external_id</code>, <code>String reward_name</code>, <code>String reward_type</code>, <code>String status</code>, <code>String earned_at</code></td><td>5</td></tr>
+<tr><td><code>RewardDefinition</code></td><td><code>String id</code>, <code>String name</code>, <code>String slug</code>, <code>String reward_type</code>, <code>num token_decimals</code>, <code>String token_chain</code>, <code>num nft_minted_pool_count</code>, <code>bool nft_is_soulbound</code>, <code>String trigger_type</code>, <code>num current_issued</code>, <code>bool is_active</code>, <code>bool attest_on_earn</code>, <code>String anchoring_mode</code>, <code>String created_at</code></td><td>18</td></tr>
+<tr><td><code>EarnedReward</code></td><td><code>String id</code>, <code>String user_id</code>, <code>String user_external_id</code>, <code>String reward_name</code>, <code>String reward_type</code>, <code>String status</code>, <code>String earned_at</code></td><td>10</td></tr>
 <tr><td><code>RewardUserReward</code></td><td><code>String id</code>, <code>String reward_name</code>, <code>String reward_type</code>, <code>String status</code>, <code>String earned_at</code></td><td>11</td></tr>
 <tr><td><code>RewardAsset</code></td><td><code>String id</code>, <code>String definition_id</code>, <code>String asset_type</code>, <code>String file_path</code>, <code>String mime_type</code>, <code>num file_size</code>, <code>String created_at</code></td><td>1</td></tr>
-<tr><td><code>CreateRewardDefinitionRequest</code></td><td><code>String name</code>, <code>String slug</code></td><td>25</td></tr>
+<tr><td><code>CreateRewardDefinitionRequest</code></td><td><code>String name</code>, <code>String slug</code></td><td>30</td></tr>
 <tr><td><code>ManualRewardRequest</code></td><td><code>String definition_id</code>, <code>List&lt;String&gt; user_ids</code></td><td>2</td></tr>
 <tr><td><code>ClaimNFTResult</code></td><td><code>bool success</code>, <code>String reward_id</code>, <code>String tx_hash</code>, <code>String wallet_address</code></td><td>1</td></tr>
+<tr><td><code>ClaimVoucherResult</code></td><td><code>bool success</code>, <code>String reward_id</code>, <code>String status</code></td><td>4</td></tr>
+<tr><td><code>VoucherDelivery</code></td><td><code>this.method</code></td><td>3</td></tr>
+<tr><td><code>VoucherProductSku</code></td><td><code>num min</code>, <code>num max</code>, <code>String currency_code</code></td><td>0</td></tr>
+<tr><td><code>VoucherProduct</code></td><td><code>String id</code>, <code>String name</code>, <code>String category</code>, <code>List&lt;String&gt; currency_codes</code>, <code>List&lt;String&gt; countries</code>, <code>List&lt;VoucherProductSku&gt; skus</code></td><td>6</td></tr>
 <tr><td><code>DistributeResult</code></td><td><code>bool success</code>, <code>String reward_id</code>, <code>String message</code></td><td>0</td></tr>
 <tr><td><code>RevokeResult</code></td><td><code>bool success</code>, <code>String reward_id</code>, <code>String status</code></td><td>0</td></tr>
 <tr><td><code>RewardAttestationResult</code></td><td><code>String attestation_id</code>, <code>String attestation_uid</code>, <code>String status</code>, <code>String subject_address</code>, <code>String reward_id</code>, <code>String reward_name</code>, <code>String earned_at</code>, <code>String created_at</code></td><td>2</td></tr>

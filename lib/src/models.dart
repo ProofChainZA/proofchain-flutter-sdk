@@ -10658,6 +10658,22 @@ class RewardDefinition implements JsonModel {
   String get anchoring_mode => _anchoring_mode as String;
   final String? _created_at;
   String get created_at => _created_at as String;
+  final List<String>? _voucher_product_ids;
+  List<String>? get voucher_product_ids => _voucher_product_ids;
+  final String? _voucher_campaign_id;
+  String? get voucher_campaign_id => _voucher_campaign_id;
+  final String? _voucher_language;
+
+  /// ISO-639-1 language of the voucher redemption page.
+  String? get voucher_language => _voucher_language;
+  final String? _voucher_message;
+
+  /// Message shown on the voucher redemption page.
+  String? get voucher_message => _voucher_message;
+  final List<String>? _voucher_delivery_methods;
+
+  /// Allowed claim-time delivery methods (`link`, `email`, `sms`).
+  List<String>? get voucher_delivery_methods => _voucher_delivery_methods;
 
   /// Creates a model from typed fields.
   ///
@@ -10689,7 +10705,12 @@ class RewardDefinition implements JsonModel {
       String? badge_color,
       required bool attest_on_earn,
       required String anchoring_mode,
-      required String created_at})
+      required String created_at,
+      List<String>? voucher_product_ids,
+      String? voucher_campaign_id,
+      String? voucher_language,
+      String? voucher_message,
+      List<String>? voucher_delivery_methods})
       : _id = id,
         _name = name,
         _slug = slug,
@@ -10717,6 +10738,11 @@ class RewardDefinition implements JsonModel {
         _attest_on_earn = attest_on_earn,
         _anchoring_mode = anchoring_mode,
         _created_at = created_at,
+        _voucher_product_ids = voucher_product_ids,
+        _voucher_campaign_id = voucher_campaign_id,
+        _voucher_language = voucher_language,
+        _voucher_message = voucher_message,
+        _voucher_delivery_methods = voucher_delivery_methods,
         _originalJson = null;
 
   /// Decodes typed fields from [json] and retains the same map for [toJson].
@@ -10791,6 +10817,25 @@ class RewardDefinition implements JsonModel {
             : json["anchoring_mode"] as String,
         _created_at =
             json["created_at"] == null ? null : json["created_at"] as String,
+        _voucher_product_ids = json["voucher_product_ids"] == null
+            ? null
+            : (json["voucher_product_ids"] as List<Object?>)
+                .map((item) => item as String)
+                .toList(growable: false),
+        _voucher_campaign_id = json["voucher_campaign_id"] == null
+            ? null
+            : json["voucher_campaign_id"] as String,
+        _voucher_language = json["voucher_language"] == null
+            ? null
+            : json["voucher_language"] as String,
+        _voucher_message = json["voucher_message"] == null
+            ? null
+            : json["voucher_message"] as String,
+        _voucher_delivery_methods = json["voucher_delivery_methods"] == null
+            ? null
+            : (json["voucher_delivery_methods"] as List<Object?>)
+                .map((item) => item as String)
+                .toList(growable: false),
         _originalJson = json;
 
   /// Returns the original input map for JSON-backed instances, without copying.
@@ -10833,6 +10878,16 @@ class RewardDefinition implements JsonModel {
         "attest_on_earn": jsonValue(_attest_on_earn),
         "anchoring_mode": jsonValue(_anchoring_mode),
         "created_at": jsonValue(_created_at),
+        if (_voucher_product_ids != null)
+          "voucher_product_ids": jsonValue(_voucher_product_ids),
+        if (_voucher_campaign_id != null)
+          "voucher_campaign_id": jsonValue(_voucher_campaign_id),
+        if (_voucher_language != null)
+          "voucher_language": jsonValue(_voucher_language),
+        if (_voucher_message != null)
+          "voucher_message": jsonValue(_voucher_message),
+        if (_voucher_delivery_methods != null)
+          "voucher_delivery_methods": jsonValue(_voucher_delivery_methods),
       };
 }
 
@@ -10867,6 +10922,22 @@ class EarnedReward implements JsonModel {
   String get earned_at => _earned_at as String;
   final String? _distributed_at;
   String? get distributed_at => _distributed_at;
+  final String? _voucher_order_id;
+  String? get voucher_order_id => _voucher_order_id;
+  final String? _voucher_delivery_method;
+
+  /// `link`, `email` or `sms`; null until the voucher is ordered.
+  String? get voucher_delivery_method => _voucher_delivery_method;
+  final String? _voucher_delivery_status;
+
+  /// `pending`, `delivered`, `failed`, `canceled`, `flagged` or `blocked`.
+  String? get voucher_delivery_status => _voucher_delivery_status;
+  final String? _voucher_delivery_failure;
+
+  /// Provider failure reason, e.g. `invalid_email`.
+  String? get voucher_delivery_failure => _voucher_delivery_failure;
+  final String? _voucher_status_updated_at;
+  String? get voucher_status_updated_at => _voucher_status_updated_at;
 
   /// Creates a model from typed fields.
   ///
@@ -10883,7 +10954,12 @@ class EarnedReward implements JsonModel {
       String? attestation_id,
       String? attestation_status,
       required String earned_at,
-      String? distributed_at})
+      String? distributed_at,
+      String? voucher_order_id,
+      String? voucher_delivery_method,
+      String? voucher_delivery_status,
+      String? voucher_delivery_failure,
+      String? voucher_status_updated_at})
       : _id = id,
         _user_id = user_id,
         _user_external_id = user_external_id,
@@ -10896,6 +10972,11 @@ class EarnedReward implements JsonModel {
         _attestation_status = attestation_status,
         _earned_at = earned_at,
         _distributed_at = distributed_at,
+        _voucher_order_id = voucher_order_id,
+        _voucher_delivery_method = voucher_delivery_method,
+        _voucher_delivery_status = voucher_delivery_status,
+        _voucher_delivery_failure = voucher_delivery_failure,
+        _voucher_status_updated_at = voucher_status_updated_at,
         _originalJson = null;
 
   /// Decodes typed fields from [json] and retains the same map for [toJson].
@@ -10931,6 +11012,21 @@ class EarnedReward implements JsonModel {
         _distributed_at = json["distributed_at"] == null
             ? null
             : json["distributed_at"] as String,
+        _voucher_order_id = json["voucher_order_id"] == null
+            ? null
+            : json["voucher_order_id"] as String,
+        _voucher_delivery_method = json["voucher_delivery_method"] == null
+            ? null
+            : json["voucher_delivery_method"] as String,
+        _voucher_delivery_status = json["voucher_delivery_status"] == null
+            ? null
+            : json["voucher_delivery_status"] as String,
+        _voucher_delivery_failure = json["voucher_delivery_failure"] == null
+            ? null
+            : json["voucher_delivery_failure"] as String,
+        _voucher_status_updated_at = json["voucher_status_updated_at"] == null
+            ? null
+            : json["voucher_status_updated_at"] as String,
         _originalJson = json;
 
   /// Returns the original input map for JSON-backed instances, without copying.
@@ -10955,6 +11051,16 @@ class EarnedReward implements JsonModel {
         "earned_at": jsonValue(_earned_at),
         if (_distributed_at != null)
           "distributed_at": jsonValue(_distributed_at),
+        if (_voucher_order_id != null)
+          "voucher_order_id": jsonValue(_voucher_order_id),
+        if (_voucher_delivery_method != null)
+          "voucher_delivery_method": jsonValue(_voucher_delivery_method),
+        if (_voucher_delivery_status != null)
+          "voucher_delivery_status": jsonValue(_voucher_delivery_status),
+        if (_voucher_delivery_failure != null)
+          "voucher_delivery_failure": jsonValue(_voucher_delivery_failure),
+        if (_voucher_status_updated_at != null)
+          "voucher_status_updated_at": jsonValue(_voucher_status_updated_at),
       };
 }
 
@@ -11255,6 +11361,23 @@ class CreateRewardDefinitionRequest implements JsonModel {
   bool? get attest_on_earn => _attest_on_earn;
   final String? _anchoring_mode;
   String? get anchoring_mode => _anchoring_mode;
+  final List<String>? _voucher_product_ids;
+  List<String>? get voucher_product_ids => _voucher_product_ids;
+  final String? _voucher_campaign_id;
+  String? get voucher_campaign_id => _voucher_campaign_id;
+  final String? _voucher_language;
+
+  /// 2-letter ISO-639-1 code translating the redemption page (e.g. `fr`).
+  String? get voucher_language => _voucher_language;
+  final String? _voucher_message;
+
+  /// Message (max 1000 chars) shown on the redemption page.
+  String? get voucher_message => _voucher_message;
+  final List<String>? _voucher_delivery_methods;
+
+  /// Allowed claim-time delivery methods (`link`, `email`, `sms`); omitted
+  /// means `["link"]`. Email/SMS buy the gift card when the fan claims.
+  List<String>? get voucher_delivery_methods => _voucher_delivery_methods;
 
   /// Creates a model from typed fields.
   ///
@@ -11286,7 +11409,12 @@ class CreateRewardDefinitionRequest implements JsonModel {
       String? badge_color,
       bool? is_public,
       bool? attest_on_earn,
-      String? anchoring_mode})
+      String? anchoring_mode,
+      List<String>? voucher_product_ids,
+      String? voucher_campaign_id,
+      String? voucher_language,
+      String? voucher_message,
+      List<String>? voucher_delivery_methods})
       : _name = name,
         _slug = slug,
         _description = description,
@@ -11314,6 +11442,11 @@ class CreateRewardDefinitionRequest implements JsonModel {
         _is_public = is_public,
         _attest_on_earn = attest_on_earn,
         _anchoring_mode = anchoring_mode,
+        _voucher_product_ids = voucher_product_ids,
+        _voucher_campaign_id = voucher_campaign_id,
+        _voucher_language = voucher_language,
+        _voucher_message = voucher_message,
+        _voucher_delivery_methods = voucher_delivery_methods,
         _originalJson = null;
 
   /// Decodes typed fields from [json] and retains the same map for [toJson].
@@ -11389,6 +11522,25 @@ class CreateRewardDefinitionRequest implements JsonModel {
         _anchoring_mode = json["anchoring_mode"] == null
             ? null
             : json["anchoring_mode"] as String,
+        _voucher_product_ids = json["voucher_product_ids"] == null
+            ? null
+            : (json["voucher_product_ids"] as List<Object?>)
+                .map((item) => item as String)
+                .toList(growable: false),
+        _voucher_campaign_id = json["voucher_campaign_id"] == null
+            ? null
+            : json["voucher_campaign_id"] as String,
+        _voucher_language = json["voucher_language"] == null
+            ? null
+            : json["voucher_language"] as String,
+        _voucher_message = json["voucher_message"] == null
+            ? null
+            : json["voucher_message"] as String,
+        _voucher_delivery_methods = json["voucher_delivery_methods"] == null
+            ? null
+            : (json["voucher_delivery_methods"] as List<Object?>)
+                .map((item) => item as String)
+                .toList(growable: false),
         _originalJson = json;
 
   /// Returns the original input map for JSON-backed instances, without copying.
@@ -11437,6 +11589,16 @@ class CreateRewardDefinitionRequest implements JsonModel {
           "attest_on_earn": jsonValue(_attest_on_earn),
         if (_anchoring_mode != null)
           "anchoring_mode": jsonValue(_anchoring_mode),
+        if (_voucher_product_ids != null)
+          "voucher_product_ids": jsonValue(_voucher_product_ids),
+        if (_voucher_campaign_id != null)
+          "voucher_campaign_id": jsonValue(_voucher_campaign_id),
+        if (_voucher_language != null)
+          "voucher_language": jsonValue(_voucher_language),
+        if (_voucher_message != null)
+          "voucher_message": jsonValue(_voucher_message),
+        if (_voucher_delivery_methods != null)
+          "voucher_delivery_methods": jsonValue(_voucher_delivery_methods),
       };
 }
 
@@ -11573,6 +11735,278 @@ class ClaimNFTResult implements JsonModel {
         if (_token_id != null) "token_id": jsonValue(_token_id),
         "tx_hash": jsonValue(_tx_hash),
         "wallet_address": jsonValue(_wallet_address),
+      };
+}
+
+/// JSON model for the voucher (gift card) claim response.
+///
+/// [redemption_url] is a secret, single-use-style link: open it directly and
+/// never persist, log or cache it. Each claim call returns a fresh link.
+class ClaimVoucherResult implements JsonModel {
+  final JsonMap? _originalJson;
+  final bool? _success;
+  bool get success => _success as bool;
+  final String? _reward_id;
+  String get reward_id => _reward_id as String;
+  final String? _status;
+  String get status => _status as String;
+  final String? _redemption_url;
+
+  /// Null for email/SMS delivery (the provider sends the voucher).
+  String? get redemption_url => _redemption_url;
+  final String? _expires_at;
+  String? get expires_at => _expires_at;
+  final String? _delivery_method;
+
+  /// `link`, `email` or `sms`.
+  String? get delivery_method => _delivery_method;
+  final String? _delivery_status;
+
+  /// `pending`, `delivered`, `failed`, `canceled`, `flagged` or `blocked`.
+  String? get delivery_status => _delivery_status;
+
+  /// Creates a model from typed fields.
+  ///
+  /// Serialization omits null optional fields and includes required fields.
+  const ClaimVoucherResult(
+      {required bool success,
+      required String reward_id,
+      required String status,
+      String? redemption_url,
+      String? expires_at,
+      String? delivery_method,
+      String? delivery_status})
+      : _success = success,
+        _reward_id = reward_id,
+        _status = status,
+        _redemption_url = redemption_url,
+        _expires_at = expires_at,
+        _delivery_method = delivery_method,
+        _delivery_status = delivery_status,
+        _originalJson = null;
+
+  /// Decodes typed fields from [json] and retains the same map for [toJson].
+  ClaimVoucherResult.fromJson(JsonMap json)
+      : _success = json["success"] == null ? null : json["success"] as bool,
+        _reward_id =
+            json["reward_id"] == null ? null : json["reward_id"] as String,
+        _status = json["status"] == null ? null : json["status"] as String,
+        _redemption_url = json["redemption_url"] == null
+            ? null
+            : json["redemption_url"] as String,
+        _expires_at =
+            json["expires_at"] == null ? null : json["expires_at"] as String,
+        _delivery_method = json["delivery_method"] == null
+            ? null
+            : json["delivery_method"] as String,
+        _delivery_status = json["delivery_status"] == null
+            ? null
+            : json["delivery_status"] as String,
+        _originalJson = json;
+
+  /// Returns the original input map for JSON-backed instances, without copying.
+  ///
+  /// Otherwise encodes typed fields, omitting null optional fields.
+  @override
+  JsonMap toJson() =>
+      _originalJson ??
+      {
+        "success": jsonValue(_success),
+        "reward_id": jsonValue(_reward_id),
+        "status": jsonValue(_status),
+        if (_redemption_url != null)
+          "redemption_url": jsonValue(_redemption_url),
+        if (_expires_at != null) "expires_at": jsonValue(_expires_at),
+        if (_delivery_method != null)
+          "delivery_method": jsonValue(_delivery_method),
+        if (_delivery_status != null)
+          "delivery_status": jsonValue(_delivery_status),
+      };
+}
+
+/// How a voucher is delivered when claimed (`claimVoucher`).
+///
+/// [method] is `link`, `email` or `sms` (see `voucherDeliveryLink` etc.).
+/// `email` requires [email]; `sms` requires an E.164 [phone]; [name] is an
+/// optional greeting. Contact details are passed straight to the voucher
+/// provider and are never stored by Proofchain or this SDK.
+class VoucherDelivery implements JsonModel {
+  final String method;
+  final String? email;
+  final String? phone;
+  final String? name;
+
+  const VoucherDelivery(
+      {required this.method, this.email, this.phone, this.name});
+
+  /// Encodes the delivery, omitting null contact fields.
+  @override
+  JsonMap toJson() => {
+        "method": method,
+        if (email != null) "email": email,
+        if (phone != null) "phone": phone,
+        if (name != null) "name": name,
+      };
+}
+
+/// Face-value band a voucher product accepts for one currency.
+class VoucherProductSku implements JsonModel {
+  final JsonMap? _originalJson;
+  final num? _min;
+  num get min => _min as num;
+  final num? _max;
+  num get max => _max as num;
+  final String? _currency_code;
+  String get currency_code => _currency_code as String;
+
+  /// Creates a model from typed fields.
+  const VoucherProductSku(
+      {required num min, required num max, required String currency_code})
+      : _min = min,
+        _max = max,
+        _currency_code = currency_code,
+        _originalJson = null;
+
+  /// Decodes typed fields from [json] and retains the same map for [toJson].
+  VoucherProductSku.fromJson(JsonMap json)
+      : _min = json["min"] == null ? null : json["min"] as num,
+        _max = json["max"] == null ? null : json["max"] as num,
+        _currency_code = json["currency_code"] == null
+            ? null
+            : json["currency_code"] as String,
+        _originalJson = json;
+
+  /// Returns the original input map for JSON-backed instances, without copying.
+  @override
+  JsonMap toJson() =>
+      _originalJson ??
+      {
+        "min": jsonValue(_min),
+        "max": jsonValue(_max),
+        "currency_code": jsonValue(_currency_code),
+      };
+}
+
+/// Voucher catalog product usable in `voucher_product_ids`.
+///
+/// Several product ids (or `voucherAllFeeFree`) let the fan choose on the
+/// redemption page.
+class VoucherProduct implements JsonModel {
+  final JsonMap? _originalJson;
+  final String? _id;
+  String get id => _id as String;
+  final String? _name;
+  String get name => _name as String;
+  final String? _category;
+  String get category => _category as String;
+  final String? _subcategory;
+  String? get subcategory => _subcategory;
+  final String? _image_url;
+  String? get image_url => _image_url;
+  final List<String>? _currency_codes;
+  List<String> get currency_codes => _currency_codes as List<String>;
+  final List<String>? _countries;
+  List<String> get countries => _countries as List<String>;
+  final List<VoucherProductSku>? _skus;
+  List<VoucherProductSku> get skus => _skus as List<VoucherProductSku>;
+  final String? _description;
+  String? get description => _description;
+  final String? _disclosure;
+
+  /// Provider legal HTML. Untrusted: sanitize before rendering.
+  String? get disclosure => _disclosure;
+  final String? _usage_instructions;
+  String? get usage_instructions => _usage_instructions;
+  final bool? _fee_free;
+
+  /// Whether the product carries no fee; `false` when absent.
+  bool get fee_free => _fee_free ?? false;
+
+  /// Creates a model from typed fields.
+  ///
+  /// Serialization omits null optional fields and includes required fields.
+  const VoucherProduct(
+      {required String id,
+      required String name,
+      required String category,
+      String? subcategory,
+      String? image_url,
+      required List<String> currency_codes,
+      required List<String> countries,
+      required List<VoucherProductSku> skus,
+      String? description,
+      String? disclosure,
+      String? usage_instructions,
+      bool fee_free = false})
+      : _id = id,
+        _name = name,
+        _category = category,
+        _subcategory = subcategory,
+        _image_url = image_url,
+        _currency_codes = currency_codes,
+        _countries = countries,
+        _skus = skus,
+        _description = description,
+        _disclosure = disclosure,
+        _usage_instructions = usage_instructions,
+        _fee_free = fee_free,
+        _originalJson = null;
+
+  /// Decodes typed fields from [json] and retains the same map for [toJson].
+  VoucherProduct.fromJson(JsonMap json)
+      : _id = json["id"] == null ? null : json["id"] as String,
+        _name = json["name"] == null ? null : json["name"] as String,
+        _category =
+            json["category"] == null ? null : json["category"] as String,
+        _subcategory =
+            json["subcategory"] == null ? null : json["subcategory"] as String,
+        _image_url =
+            json["image_url"] == null ? null : json["image_url"] as String,
+        _currency_codes = json["currency_codes"] == null
+            ? null
+            : (json["currency_codes"] as List<Object?>)
+                .map((item) => item as String)
+                .toList(growable: false),
+        _countries = json["countries"] == null
+            ? null
+            : (json["countries"] as List<Object?>)
+                .map((item) => item as String)
+                .toList(growable: false),
+        _skus = json["skus"] == null
+            ? null
+            : (json["skus"] as List<Object?>)
+                .map((item) => VoucherProductSku.fromJson(asJsonMap(item)))
+                .toList(growable: false),
+        _description =
+            json["description"] == null ? null : json["description"] as String,
+        _disclosure =
+            json["disclosure"] == null ? null : json["disclosure"] as String,
+        _usage_instructions = json["usage_instructions"] == null
+            ? null
+            : json["usage_instructions"] as String,
+        _fee_free = json["fee_free"] == null ? null : json["fee_free"] as bool,
+        _originalJson = json;
+
+  /// Returns the original input map for JSON-backed instances, without copying.
+  ///
+  /// Otherwise encodes typed fields, omitting null optional fields.
+  @override
+  JsonMap toJson() =>
+      _originalJson ??
+      {
+        "id": jsonValue(_id),
+        "name": jsonValue(_name),
+        "category": jsonValue(_category),
+        if (_subcategory != null) "subcategory": jsonValue(_subcategory),
+        if (_image_url != null) "image_url": jsonValue(_image_url),
+        "currency_codes": jsonValue(_currency_codes),
+        "countries": jsonValue(_countries),
+        "skus": jsonValue(_skus),
+        if (_description != null) "description": jsonValue(_description),
+        if (_disclosure != null) "disclosure": jsonValue(_disclosure),
+        if (_usage_instructions != null)
+          "usage_instructions": jsonValue(_usage_instructions),
+        "fee_free": fee_free,
       };
 }
 

@@ -26,7 +26,7 @@
     "attestations",
     "airkit"
   ],
-  "publicOperations": 272,
+  "publicOperations": 274,
   "methods": [
     {
       "owner": "ProofChain",
@@ -1201,7 +1201,7 @@
       "name": "listDefinitions",
       "signature": "Future<List<RewardDefinition>> listDefinitions([ListRewardsOptions? options])",
       "source": "lib/src/rewards.dart",
-      "line": 10,
+      "line": 20,
       "nativeLifecycle": false
     },
     {
@@ -1209,7 +1209,7 @@
       "name": "getDefinition",
       "signature": "Future<RewardDefinition> getDefinition(String definitionId)",
       "source": "lib/src/rewards.dart",
-      "line": 22,
+      "line": 32,
       "nativeLifecycle": false
     },
     {
@@ -1217,7 +1217,7 @@
       "name": "createDefinition",
       "signature": "Future<RewardDefinition> createDefinition(CreateRewardDefinitionRequest data)",
       "source": "lib/src/rewards.dart",
-      "line": 25,
+      "line": 35,
       "nativeLifecycle": false
     },
     {
@@ -1225,7 +1225,7 @@
       "name": "updateDefinition",
       "signature": "Future<RewardDefinition> updateDefinition(String definitionId, JsonMap data)",
       "source": "lib/src/rewards.dart",
-      "line": 29,
+      "line": 39,
       "nativeLifecycle": false
     },
     {
@@ -1233,7 +1233,7 @@
       "name": "deleteDefinition",
       "signature": "Future<void> deleteDefinition(String definitionId)",
       "source": "lib/src/rewards.dart",
-      "line": 33,
+      "line": 43,
       "nativeLifecycle": false
     },
     {
@@ -1241,7 +1241,7 @@
       "name": "activateDefinition",
       "signature": "Future<RewardDefinition> activateDefinition(String definitionId)",
       "source": "lib/src/rewards.dart",
-      "line": 37,
+      "line": 47,
       "nativeLifecycle": false
     },
     {
@@ -1249,7 +1249,7 @@
       "name": "deactivateDefinition",
       "signature": "Future<RewardDefinition> deactivateDefinition(String definitionId)",
       "source": "lib/src/rewards.dart",
-      "line": 42,
+      "line": 52,
       "nativeLifecycle": false
     },
     {
@@ -1257,7 +1257,7 @@
       "name": "listEarned",
       "signature": "Future<List<EarnedReward>> listEarned([JsonMap options = const {}])",
       "source": "lib/src/rewards.dart",
-      "line": 47,
+      "line": 57,
       "nativeLifecycle": false
     },
     {
@@ -1265,7 +1265,7 @@
       "name": "getUserRewards",
       "signature": "Future<List<RewardUserReward>> getUserRewards(String userId, [JsonMap options = const {}])",
       "source": "lib/src/rewards.dart",
-      "line": 62,
+      "line": 72,
       "nativeLifecycle": false
     },
     {
@@ -1273,7 +1273,7 @@
       "name": "getCatalog",
       "signature": "Future<List<RewardDefinition>> getCatalog([String? category])",
       "source": "lib/src/rewards.dart",
-      "line": 75,
+      "line": 85,
       "nativeLifecycle": false
     },
     {
@@ -1281,7 +1281,7 @@
       "name": "claimNFT",
       "signature": "Future<ClaimNFTResult> claimNFT(String earnedRewardId, String walletAddress)",
       "source": "lib/src/rewards.dart",
-      "line": 82,
+      "line": 92,
       "nativeLifecycle": false
     },
     {
@@ -1289,7 +1289,23 @@
       "name": "claimReward",
       "signature": "Future<ClaimNFTResult> claimReward(String earnedRewardId, String walletAddress)",
       "source": "lib/src/rewards.dart",
-      "line": 89,
+      "line": 99,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.rewards",
+      "name": "claimVoucher",
+      "signature": "Future<ClaimVoucherResult> claimVoucher(String earnedRewardId, {VoucherDelivery? delivery})",
+      "source": "lib/src/rewards.dart",
+      "line": 103,
+      "nativeLifecycle": false
+    },
+    {
+      "owner": "client.rewards",
+      "name": "listVoucherProducts",
+      "signature": "Future<List<VoucherProduct>> listVoucherProducts({String? country, String? currency, List<String>? category, List<String>? subcategory, bool? feeFree})",
+      "source": "lib/src/rewards.dart",
+      "line": 118,
       "nativeLifecycle": false
     },
     {
@@ -1297,7 +1313,7 @@
       "name": "award",
       "signature": "Future<List<EarnedReward>> award(ManualRewardRequest request)",
       "source": "lib/src/rewards.dart",
-      "line": 92,
+      "line": 145,
       "nativeLifecycle": false
     },
     {
@@ -1305,7 +1321,7 @@
       "name": "awardManual",
       "signature": "Future<List<EarnedReward>> awardManual(ManualRewardRequest request)",
       "source": "lib/src/rewards.dart",
-      "line": 95,
+      "line": 148,
       "nativeLifecycle": false
     },
     {
@@ -1313,7 +1329,7 @@
       "name": "distribute",
       "signature": "Future<DistributeResult> distribute(String earnedRewardId)",
       "source": "lib/src/rewards.dart",
-      "line": 97,
+      "line": 150,
       "nativeLifecycle": false
     },
     {
@@ -1321,7 +1337,7 @@
       "name": "distributePending",
       "signature": "Future<DistributeResult> distributePending(String earnedRewardId)",
       "source": "lib/src/rewards.dart",
-      "line": 103,
+      "line": 156,
       "nativeLifecycle": false
     },
     {
@@ -1329,7 +1345,7 @@
       "name": "distributeAll",
       "signature": "Future<JsonMap> distributeAll()",
       "source": "lib/src/rewards.dart",
-      "line": 105,
+      "line": 158,
       "nativeLifecycle": false
     },
     {
@@ -1337,7 +1353,7 @@
       "name": "revoke",
       "signature": "Future<RevokeResult> revoke(String earnedRewardId, String reason)",
       "source": "lib/src/rewards.dart",
-      "line": 107,
+      "line": 160,
       "nativeLifecycle": false
     },
     {
@@ -1345,7 +1361,7 @@
       "name": "uploadAsset",
       "signature": "Future<RewardAsset> uploadAsset(String definitionId, UploadFile file, String assetType)",
       "source": "lib/src/rewards.dart",
-      "line": 113,
+      "line": 166,
       "nativeLifecycle": false
     },
     {
@@ -1353,7 +1369,7 @@
       "name": "listAssets",
       "signature": "Future<List<RewardAsset>> listAssets(String definitionId)",
       "source": "lib/src/rewards.dart",
-      "line": 121,
+      "line": 174,
       "nativeLifecycle": false
     },
     {
@@ -1361,7 +1377,7 @@
       "name": "attest",
       "signature": "Future<RewardAttestationResult> attest(String earnedRewardId)",
       "source": "lib/src/rewards.dart",
-      "line": 124,
+      "line": 177,
       "nativeLifecycle": false
     },
     {
@@ -1369,7 +1385,7 @@
       "name": "anchor",
       "signature": "Future<AnchorResult> anchor(String earnedRewardId)",
       "source": "lib/src/rewards.dart",
-      "line": 128,
+      "line": 181,
       "nativeLifecycle": false
     },
     {
@@ -1377,7 +1393,7 @@
       "name": "getAttestation",
       "signature": "Future<RewardAttestationResult> getAttestation(String earnedRewardId)",
       "source": "lib/src/rewards.dart",
-      "line": 131,
+      "line": 184,
       "nativeLifecycle": false
     },
     {
@@ -1385,7 +1401,7 @@
       "name": "verifyAttestation",
       "signature": "Future<RewardVerifyResult> verifyAttestation(String earnedRewardId)",
       "source": "lib/src/rewards.dart",
-      "line": 134,
+      "line": 187,
       "nativeLifecycle": false
     },
     {
@@ -3734,7 +3750,7 @@
         "String anchoring_mode",
         "String created_at"
       ],
-      "optionalCount": 13,
+      "optionalCount": 18,
       "source": "lib/src/models.dart",
       "line": 10600
     },
@@ -3749,9 +3765,9 @@
         "String status",
         "String earned_at"
       ],
-      "optionalCount": 5,
+      "optionalCount": 10,
       "source": "lib/src/models.dart",
-      "line": 10839
+      "line": 10894
     },
     {
       "name": "RewardUserReward",
@@ -3764,7 +3780,7 @@
       ],
       "optionalCount": 11,
       "source": "lib/src/models.dart",
-      "line": 10961
+      "line": 11067
     },
     {
       "name": "RewardAsset",
@@ -3779,7 +3795,7 @@
       ],
       "optionalCount": 1,
       "source": "lib/src/models.dart",
-      "line": 11107
+      "line": 11213
     },
     {
       "name": "CreateRewardDefinitionRequest",
@@ -3787,9 +3803,9 @@
         "String name",
         "String slug"
       ],
-      "optionalCount": 25,
+      "optionalCount": 30,
       "source": "lib/src/models.dart",
-      "line": 11197
+      "line": 11303
     },
     {
       "name": "ManualRewardRequest",
@@ -3799,7 +3815,7 @@
       ],
       "optionalCount": 2,
       "source": "lib/src/models.dart",
-      "line": 11443
+      "line": 11605
     },
     {
       "name": "ClaimNFTResult",
@@ -3811,7 +3827,52 @@
       ],
       "optionalCount": 1,
       "source": "lib/src/models.dart",
-      "line": 11512
+      "line": 11674
+    },
+    {
+      "name": "ClaimVoucherResult",
+      "required": [
+        "bool success",
+        "String reward_id",
+        "String status"
+      ],
+      "optionalCount": 4,
+      "source": "lib/src/models.dart",
+      "line": 11741
+    },
+    {
+      "name": "VoucherDelivery",
+      "required": [
+        "this.method"
+      ],
+      "optionalCount": 3,
+      "source": "lib/src/models.dart",
+      "line": 11827
+    },
+    {
+      "name": "VoucherProductSku",
+      "required": [
+        "num min",
+        "num max",
+        "String currency_code"
+      ],
+      "optionalCount": 0,
+      "source": "lib/src/models.dart",
+      "line": 11852
+    },
+    {
+      "name": "VoucherProduct",
+      "required": [
+        "String id",
+        "String name",
+        "String category",
+        "List<String> currency_codes",
+        "List<String> countries",
+        "List<VoucherProductSku> skus"
+      ],
+      "optionalCount": 6,
+      "source": "lib/src/models.dart",
+      "line": 11890
     },
     {
       "name": "DistributeResult",
@@ -3822,7 +3883,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 11579
+      "line": 12013
     },
     {
       "name": "RevokeResult",
@@ -3833,7 +3894,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 11632
+      "line": 12066
     },
     {
       "name": "RewardAttestationResult",
@@ -3849,7 +3910,7 @@
       ],
       "optionalCount": 2,
       "source": "lib/src/models.dart",
-      "line": 11685
+      "line": 12119
     },
     {
       "name": "AnchorResult",
@@ -3862,7 +3923,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 11790
+      "line": 12224
     },
     {
       "name": "RewardVerifyResult",
@@ -3879,14 +3940,14 @@
       ],
       "optionalCount": 2,
       "source": "lib/src/models.dart",
-      "line": 11857
+      "line": 12291
     },
     {
       "name": "ListRewardsOptions",
       "required": [],
       "optionalCount": 4,
       "source": "lib/src/models.dart",
-      "line": 11968
+      "line": 12402
     },
     {
       "name": "Quest",
@@ -3911,7 +3972,7 @@
       ],
       "optionalCount": 35,
       "source": "lib/src/models.dart",
-      "line": 12025
+      "line": 12459
     },
     {
       "name": "QuestCtaLink",
@@ -3924,7 +3985,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 12526
+      "line": 12960
     },
     {
       "name": "QuestCtaResolver",
@@ -3936,7 +3997,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 12599
+      "line": 13033
     },
     {
       "name": "QuestStep",
@@ -3950,7 +4011,7 @@
       ],
       "optionalCount": 9,
       "source": "lib/src/models.dart",
-      "line": 12661
+      "line": 13095
     },
     {
       "name": "UserQuestProgress",
@@ -3970,7 +4031,7 @@
       ],
       "optionalCount": 4,
       "source": "lib/src/models.dart",
-      "line": 12807
+      "line": 13241
     },
     {
       "name": "RewardEarned",
@@ -3983,7 +4044,7 @@
       ],
       "optionalCount": 2,
       "source": "lib/src/models.dart",
-      "line": 12959
+      "line": 13393
     },
     {
       "name": "StepProgress",
@@ -3995,7 +4056,7 @@
       ],
       "optionalCount": 3,
       "source": "lib/src/models.dart",
-      "line": 13041
+      "line": 13475
     },
     {
       "name": "StepStartResult",
@@ -4008,7 +4069,7 @@
       ],
       "optionalCount": 2,
       "source": "lib/src/models.dart",
-      "line": 13122
+      "line": 13556
     },
     {
       "name": "StepCompletionResult",
@@ -4023,7 +4084,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 13205
+      "line": 13639
     },
     {
       "name": "ClaimRewardResult",
@@ -4036,7 +4097,7 @@
       ],
       "optionalCount": 1,
       "source": "lib/src/models.dart",
-      "line": 13290
+      "line": 13724
     },
     {
       "name": "QuestWithProgress",
@@ -4045,7 +4106,7 @@
       ],
       "optionalCount": 1,
       "source": "lib/src/models.dart",
-      "line": 13368
+      "line": 13802
     },
     {
       "name": "CreateQuestRequest",
@@ -4055,7 +4116,7 @@
       ],
       "optionalCount": 26,
       "source": "lib/src/models.dart",
-      "line": 13416
+      "line": 13850
     },
     {
       "name": "CreateQuestStepRequest",
@@ -4064,14 +4125,14 @@
       ],
       "optionalCount": 12,
       "source": "lib/src/models.dart",
-      "line": 13676
+      "line": 14110
     },
     {
       "name": "ListQuestsOptions",
       "required": [],
       "optionalCount": 6,
       "source": "lib/src/models.dart",
-      "line": 13809
+      "line": 14243
     },
     {
       "name": "Schema",
@@ -4085,7 +4146,7 @@
       ],
       "optionalCount": 4,
       "source": "lib/src/models.dart",
-      "line": 13882
+      "line": 14316
     },
     {
       "name": "SchemaDetail",
@@ -4101,7 +4162,7 @@
       ],
       "optionalCount": 4,
       "source": "lib/src/models.dart",
-      "line": 13983
+      "line": 14417
     },
     {
       "name": "SchemaField",
@@ -4111,7 +4172,7 @@
       ],
       "optionalCount": 7,
       "source": "lib/src/models.dart",
-      "line": 14045
+      "line": 14479
     },
     {
       "name": "ValidationResult",
@@ -4122,7 +4183,7 @@
       ],
       "optionalCount": 1,
       "source": "lib/src/models.dart",
-      "line": 14138
+      "line": 14572
     },
     {
       "name": "SchemaValidationError",
@@ -4132,7 +4193,7 @@
       ],
       "optionalCount": 1,
       "source": "lib/src/models.dart",
-      "line": 14205
+      "line": 14639
     },
     {
       "name": "SchemaListResponse",
@@ -4142,7 +4203,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 14255
+      "line": 14689
     },
     {
       "name": "CreateSchemaRequest",
@@ -4151,7 +4212,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 14303
+      "line": 14737
     },
     {
       "name": "ValidateDataRequest",
@@ -4161,14 +4222,14 @@
       ],
       "optionalCount": 1,
       "source": "lib/src/models.dart",
-      "line": 14344
+      "line": 14778
     },
     {
       "name": "ListSchemasOptions",
       "required": [],
       "optionalCount": 4,
       "source": "lib/src/models.dart",
-      "line": 14400
+      "line": 14834
     },
     {
       "name": "DataViewColumn",
@@ -4178,7 +4239,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 14455
+      "line": 14889
     },
     {
       "name": "DataViewInfo",
@@ -4192,7 +4253,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 14499
+      "line": 14933
     },
     {
       "name": "DataViewListResponse",
@@ -4203,7 +4264,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 14576
+      "line": 15010
     },
     {
       "name": "DataViewSummary",
@@ -4213,7 +4274,7 @@
       ],
       "optionalCount": 3,
       "source": "lib/src/models.dart",
-      "line": 14642
+      "line": 15076
     },
     {
       "name": "DataViewDetail",
@@ -4231,7 +4292,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 14715
+      "line": 15149
     },
     {
       "name": "DataViewComputation",
@@ -4240,7 +4301,7 @@
       ],
       "optionalCount": 13,
       "source": "lib/src/models.dart",
-      "line": 14820
+      "line": 15254
     },
     {
       "name": "TierDefinition",
@@ -4251,7 +4312,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 14962
+      "line": 15396
     },
     {
       "name": "DataViewExecuteResult",
@@ -4266,7 +4327,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 15012
+      "line": 15446
     },
     {
       "name": "DataViewPreviewRequest",
@@ -4276,7 +4337,7 @@
       ],
       "optionalCount": 2,
       "source": "lib/src/models.dart",
-      "line": 15096
+      "line": 15530
     },
     {
       "name": "DataViewPreviewResult",
@@ -4290,7 +4351,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 15159
+      "line": 15593
     },
     {
       "name": "CreateDataViewRequest",
@@ -4302,14 +4363,14 @@
       ],
       "optionalCount": 3,
       "source": "lib/src/models.dart",
-      "line": 15237
+      "line": 15671
     },
     {
       "name": "UpdateDataViewRequest",
       "required": [],
       "optionalCount": 5,
       "source": "lib/src/models.dart",
-      "line": 15323
+      "line": 15757
     },
     {
       "name": "FanProfileView",
@@ -4325,7 +4386,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 15396
+      "line": 15830
     },
     {
       "name": "ActivitySummaryView",
@@ -4340,7 +4401,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 15490
+      "line": 15924
     },
     {
       "name": "EventMetadata",
@@ -4351,7 +4412,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 15578
+      "line": 16012
     },
     {
       "name": "ViewTemplate",
@@ -4363,7 +4424,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 15641
+      "line": 16075
     },
     {
       "name": "LeaderboardUserProfile",
@@ -4380,7 +4441,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 15702
+      "line": 16136
     },
     {
       "name": "CohortLeaderboardEntry",
@@ -4393,7 +4454,7 @@
       ],
       "optionalCount": 2,
       "source": "lib/src/models.dart",
-      "line": 15797
+      "line": 16231
     },
     {
       "name": "CohortGroupStats",
@@ -4405,7 +4466,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 15880
+      "line": 16314
     },
     {
       "name": "CohortLeaderboardResponse",
@@ -4421,7 +4482,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 15947
+      "line": 16381
     },
     {
       "name": "CohortDefinition",
@@ -4437,7 +4498,7 @@
       ],
       "optionalCount": 5,
       "source": "lib/src/models.dart",
-      "line": 16044
+      "line": 16478
     },
     {
       "name": "UserCohortBreakdownEntry",
@@ -4451,7 +4512,7 @@
       ],
       "optionalCount": 2,
       "source": "lib/src/models.dart",
-      "line": 16164
+      "line": 16598
     },
     {
       "name": "UserBreakdownResponse",
@@ -4462,21 +4523,21 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 16263
+      "line": 16697
     },
     {
       "name": "CohortLeaderboardOptions",
       "required": [],
       "optionalCount": 6,
       "source": "lib/src/models.dart",
-      "line": 16326
+      "line": 16760
     },
     {
       "name": "ListCohortsOptions",
       "required": [],
       "optionalCount": 3,
       "source": "lib/src/models.dart",
-      "line": 16399
+      "line": 16833
     },
     {
       "name": "FanpassLeaderboardUserProfile",
@@ -4493,7 +4554,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 16448
+      "line": 16882
     },
     {
       "name": "FanpassLeaderboardEntry",
@@ -4507,7 +4568,7 @@
       ],
       "optionalCount": 2,
       "source": "lib/src/models.dart",
-      "line": 16543
+      "line": 16977
     },
     {
       "name": "FanpassGroupStats",
@@ -4519,7 +4580,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 16633
+      "line": 17067
     },
     {
       "name": "FanpassCohortStatus",
@@ -4531,7 +4592,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 16697
+      "line": 17131
     },
     {
       "name": "FanpassLeaderboardResponse",
@@ -4548,7 +4609,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 16762
+      "line": 17196
     },
     {
       "name": "FanpassUserComparisonResponse",
@@ -4559,14 +4620,14 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 16875
+      "line": 17309
     },
     {
       "name": "FanpassLeaderboardOptions",
       "required": [],
       "optionalCount": 7,
       "source": "lib/src/models.dart",
-      "line": 16933
+      "line": 17367
     },
     {
       "name": "PushSubscriptionJSON",
@@ -4576,7 +4637,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 17015
+      "line": 17449
     },
     {
       "name": "NotificationEvent",
@@ -4590,7 +4651,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 17068
+      "line": 17502
     },
     {
       "name": "CredentialType",
@@ -4612,7 +4673,7 @@
       ],
       "optionalCount": 5,
       "source": "lib/src/models.dart",
-      "line": 17154
+      "line": 17588
     },
     {
       "name": "IssuedCredential",
@@ -4632,7 +4693,7 @@
       ],
       "optionalCount": 5,
       "source": "lib/src/models.dart",
-      "line": 17324
+      "line": 17758
     },
     {
       "name": "CredentialVerifyResult",
@@ -4648,7 +4709,7 @@
       ],
       "optionalCount": 4,
       "source": "lib/src/models.dart",
-      "line": 17485
+      "line": 17919
     },
     {
       "name": "UserCredentialsSummary",
@@ -4660,7 +4721,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 17605
+      "line": 18039
     },
     {
       "name": "CreateCredentialTypeRequest",
@@ -4669,7 +4730,7 @@
       ],
       "optionalCount": 15,
       "source": "lib/src/models.dart",
-      "line": 17674
+      "line": 18108
     },
     {
       "name": "IssueCredentialRequest",
@@ -4679,14 +4740,14 @@
       ],
       "optionalCount": 4,
       "source": "lib/src/models.dart",
-      "line": 17832
+      "line": 18266
     },
     {
       "name": "ListIssuedCredentialsOptions",
       "required": [],
       "optionalCount": 5,
       "source": "lib/src/models.dart",
-      "line": 17911
+      "line": 18345
     },
     {
       "name": "MintNFTRequest",
@@ -4696,7 +4757,7 @@
       ],
       "optionalCount": 10,
       "source": "lib/src/models.dart",
-      "line": 17978
+      "line": 18412
     },
     {
       "name": "NFTMint",
@@ -4726,14 +4787,14 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 18127
+      "line": 18561
     },
     {
       "name": "ListMintsOptions",
       "required": [],
       "optionalCount": 5,
       "source": "lib/src/models.dart",
-      "line": 18316
+      "line": 18750
     },
     {
       "name": "ListMintsResponse",
@@ -4743,14 +4804,14 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 18383
+      "line": 18817
     },
     {
       "name": "OTTGenerateRequest",
       "required": [],
       "optionalCount": 2,
       "source": "lib/src/models.dart",
-      "line": 18431
+      "line": 18865
     },
     {
       "name": "OTTGenerateResponse",
@@ -4760,7 +4821,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 18480
+      "line": 18914
     },
     {
       "name": "OTTRedeemResponse",
@@ -4774,14 +4835,14 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 18525
+      "line": 18959
     },
     {
       "name": "OTTConfigUpdate",
       "required": [],
       "optionalCount": 5,
       "source": "lib/src/models.dart",
-      "line": 18602
+      "line": 19036
     },
     {
       "name": "OTTConfigResponse",
@@ -4795,7 +4856,7 @@
       ],
       "optionalCount": 1,
       "source": "lib/src/models.dart",
-      "line": 18681
+      "line": 19115
     },
     {
       "name": "IngestEventRequest",
@@ -4805,7 +4866,7 @@
       ],
       "optionalCount": 5,
       "source": "lib/src/models.dart",
-      "line": 18778
+      "line": 19212
     },
     {
       "name": "IngestEventResponse",
@@ -4816,7 +4877,7 @@
       ],
       "optionalCount": 2,
       "source": "lib/src/models.dart",
-      "line": 18870
+      "line": 19304
     },
     {
       "name": "BatchIngestRequest",
@@ -4825,7 +4886,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 18940
+      "line": 19374
     },
     {
       "name": "BatchIngestResponse",
@@ -4837,7 +4898,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 18983
+      "line": 19417
     },
     {
       "name": "IngestionClientOptions",
@@ -4846,7 +4907,7 @@
       ],
       "optionalCount": 2,
       "source": "lib/src/models.dart",
-      "line": 19047
+      "line": 19481
     },
     {
       "name": "EndUserIngestionClientOptions",
@@ -4856,7 +4917,7 @@
       ],
       "optionalCount": 2,
       "source": "lib/src/models.dart",
-      "line": 19098
+      "line": 19532
     },
     {
       "name": "ComprehensiveWalletInfoBalances",
@@ -4868,7 +4929,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 19166
+      "line": 19600
     },
     {
       "name": "ComprehensiveWalletInfoNfts",
@@ -4878,7 +4939,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 19229
+      "line": 19663
     },
     {
       "name": "ComprehensiveWalletInfoActivity",
@@ -4888,7 +4949,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 19278
+      "line": 19712
     },
     {
       "name": "UserWalletSummaryWalletsItem",
@@ -4902,7 +4963,7 @@
       ],
       "optionalCount": 4,
       "source": "lib/src/models.dart",
-      "line": 19328
+      "line": 19762
     },
     {
       "name": "UserWithWalletsWalletsItem",
@@ -4915,7 +4976,7 @@
       ],
       "optionalCount": 1,
       "source": "lib/src/models.dart",
-      "line": 19434
+      "line": 19868
     },
     {
       "name": "EnsureWalletResultAssetWallet",
@@ -4927,7 +4988,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 19506
+      "line": 19940
     },
     {
       "name": "EnsureWalletResultSmartWallet",
@@ -4939,7 +5000,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 19566
+      "line": 20000
     },
     {
       "name": "EventMetadataEventTypesItem",
@@ -4950,7 +5011,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 19626
+      "line": 20060
     },
     {
       "name": "PushSubscriptionJSONKeys",
@@ -4960,7 +5021,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 19680
+      "line": 20114
     },
     {
       "name": "UserWalletSummaryWalletsItemBalances",
@@ -4972,7 +5033,7 @@
       ],
       "optionalCount": 0,
       "source": "lib/src/models.dart",
-      "line": 19724
+      "line": 20158
     }
   ],
   "typeAliases": [

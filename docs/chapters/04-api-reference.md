@@ -1034,6 +1034,18 @@ Future<ClaimNFTResult> claimNFT(String earnedRewardId, String walletAddress)
 Future<ClaimNFTResult> claimReward(String earnedRewardId, String walletAddress)
 ```
 
+### `client.rewards.claimVoucher`
+
+```text
+Future<ClaimVoucherResult> claimVoucher(String earnedRewardId, {VoucherDelivery? delivery})
+```
+
+### `client.rewards.listVoucherProducts`
+
+```text
+Future<List<VoucherProduct>> listVoucherProducts({String? country, String? currency, List<String>? category, List<String>? subcategory, bool? feeFree})
+```
+
 ### `client.rewards.award`
 
 ```text
@@ -1967,13 +1979,17 @@ The catalog intentionally distinguishes model construction from API authorizatio
 <tr><td><code>WalletCreationResult</code></td><td><code>bool success</code>, <code>String user_id</code>, <code>String wallet_address</code>, <code>String source</code></td><td>2</td></tr>
 <tr><td><code>EnsureWalletResult</code></td><td><code>String user_id</code>, <code>EnsureWalletResultAssetWallet asset_wallet</code>, <code>EnsureWalletResultSmartWallet smart_wallet</code>, <code>String network</code>, <code>bool created</code></td><td>0</td></tr>
 <tr><td><code>SetProfileRequest</code></td><td>None</td><td>12</td></tr>
-<tr><td><code>RewardDefinition</code></td><td><code>String id</code>, <code>String name</code>, <code>String slug</code>, <code>String reward_type</code>, <code>num token_decimals</code>, <code>String token_chain</code>, <code>num nft_minted_pool_count</code>, <code>bool nft_is_soulbound</code>, <code>String trigger_type</code>, <code>num current_issued</code>, <code>bool is_active</code>, <code>bool attest_on_earn</code>, <code>String anchoring_mode</code>, <code>String created_at</code></td><td>13</td></tr>
-<tr><td><code>EarnedReward</code></td><td><code>String id</code>, <code>String user_id</code>, <code>String user_external_id</code>, <code>String reward_name</code>, <code>String reward_type</code>, <code>String status</code>, <code>String earned_at</code></td><td>5</td></tr>
+<tr><td><code>RewardDefinition</code></td><td><code>String id</code>, <code>String name</code>, <code>String slug</code>, <code>String reward_type</code>, <code>num token_decimals</code>, <code>String token_chain</code>, <code>num nft_minted_pool_count</code>, <code>bool nft_is_soulbound</code>, <code>String trigger_type</code>, <code>num current_issued</code>, <code>bool is_active</code>, <code>bool attest_on_earn</code>, <code>String anchoring_mode</code>, <code>String created_at</code></td><td>18</td></tr>
+<tr><td><code>EarnedReward</code></td><td><code>String id</code>, <code>String user_id</code>, <code>String user_external_id</code>, <code>String reward_name</code>, <code>String reward_type</code>, <code>String status</code>, <code>String earned_at</code></td><td>10</td></tr>
 <tr><td><code>RewardUserReward</code></td><td><code>String id</code>, <code>String reward_name</code>, <code>String reward_type</code>, <code>String status</code>, <code>String earned_at</code></td><td>11</td></tr>
 <tr><td><code>RewardAsset</code></td><td><code>String id</code>, <code>String definition_id</code>, <code>String asset_type</code>, <code>String file_path</code>, <code>String mime_type</code>, <code>num file_size</code>, <code>String created_at</code></td><td>1</td></tr>
-<tr><td><code>CreateRewardDefinitionRequest</code></td><td><code>String name</code>, <code>String slug</code></td><td>25</td></tr>
+<tr><td><code>CreateRewardDefinitionRequest</code></td><td><code>String name</code>, <code>String slug</code></td><td>30</td></tr>
 <tr><td><code>ManualRewardRequest</code></td><td><code>String definition_id</code>, <code>List&lt;String&gt; user_ids</code></td><td>2</td></tr>
 <tr><td><code>ClaimNFTResult</code></td><td><code>bool success</code>, <code>String reward_id</code>, <code>String tx_hash</code>, <code>String wallet_address</code></td><td>1</td></tr>
+<tr><td><code>ClaimVoucherResult</code></td><td><code>bool success</code>, <code>String reward_id</code>, <code>String status</code></td><td>4</td></tr>
+<tr><td><code>VoucherDelivery</code></td><td><code>this.method</code></td><td>3</td></tr>
+<tr><td><code>VoucherProductSku</code></td><td><code>num min</code>, <code>num max</code>, <code>String currency_code</code></td><td>0</td></tr>
+<tr><td><code>VoucherProduct</code></td><td><code>String id</code>, <code>String name</code>, <code>String category</code>, <code>List&lt;String&gt; currency_codes</code>, <code>List&lt;String&gt; countries</code>, <code>List&lt;VoucherProductSku&gt; skus</code></td><td>6</td></tr>
 <tr><td><code>DistributeResult</code></td><td><code>bool success</code>, <code>String reward_id</code>, <code>String message</code></td><td>0</td></tr>
 <tr><td><code>RevokeResult</code></td><td><code>bool success</code>, <code>String reward_id</code>, <code>String status</code></td><td>0</td></tr>
 <tr><td><code>RewardAttestationResult</code></td><td><code>String attestation_id</code>, <code>String attestation_uid</code>, <code>String status</code>, <code>String subject_address</code>, <code>String reward_id</code>, <code>String reward_name</code>, <code>String earned_at</code>, <code>String created_at</code></td><td>2</td></tr>
